@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <title>Estudo SPIRA: Gravador de Voz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script type="text/javascript" src="assets/js/recorder.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>   
+    <script type="text/javascript" src="//cloudfront.loggly.com/js/loggly.tracker-latest.min.js" async></script>
+    <script>
+        var _LTracker = _LTracker || [];
+        _LTracker.push({'logglyKey': 'ec11fec0-9c6f-4166-9313-1535c21fc422',
+        'sendConsoleErrors' : true,
+        'tag' : 'loggly-jslogger'  });
+        window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
+            _LTracker.push('UA: ' + navigator.userAgent + '| Error: ' + errorMsg + ' | Script: ' + url + ' | Line: ' + lineNumber
+                    + ' | Column: ' + column + ' | StackTrace: ' +  errorObj + ' | Referrer: ' +  document.referrer);
+        }       
+    </script>
+  </head>
+  <body>
+    <style>
+      svg .circle1{
+          animation: rotate 1s linear infinite;
+          transform-origin: center;            
+      }
+
+      @keyframes rotate{
+          0%{
+              transform:rotate(0)
+          }
+          100%{
+          transform:rotate(360deg)
+          }
+      }
+
+      div.mic{
+          text-decoration: none;
+          display: inline-block;
+          width: 64px;
+          height: 64px;
+      }
+  </style>
+  
+    <div style="width: 100%; margin-left: -20px;">
+      <div>
+        <h3 id="P1">Passo 1: Fale próximo ao microfone e sem usar viva voz. Clique no botão:</h3>
+      </div>
+      <div>
+        <div id="btnR"><button id="recordButton">Gravar</button>  </div> <div class="mic" id="mic" style="display:none";>
+         
+          <svg viewBox="0 0 154 154" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="77" cy="77" r="64" fill="#FF0000"/>
+              <path class="circle1" d="M150.632 77C152.492 77 154.008 78.5087 153.926 80.3671C153.472 90.7466 150.921 100.939 146.414 110.326C141.908 119.713 135.549 128.078 127.734 134.923C126.335 136.149 124.21 135.909 123.046 134.458V134.458C121.883 133.006 122.123 130.892 123.517 129.661C130.547 123.451 136.272 115.888 140.342 107.411C144.412 98.9337 146.734 89.7367 147.183 80.3669C147.272 78.5089 148.772 77 150.632 77V77Z" fill="#FF0000"/>
+              <path d="M77 89C83.625 89 89 83.75 89 77V57C89 50.375 83.625 45 77 45C70.25 45 65 50.375 65 57V77C65 83.75 70.25 89 77 89ZM97 69H95C93.875 69 93 70 93 71V77C93 86.375 84.875 93.875 75.375 93C67 92.125 61 84.75 61 76.375V71C61 70 60 69 59 69H57C55.875 69 55 70 55 71V76.125C55 87.25 62.875 97.25 74 98.75V103H67C65.875 103 65 104 65 105V107C65 108.125 65.875 109 67 109H87C88 109 89 108.125 89 107V105C89 104 88 103 87 103H80V98.875C90.625 97.375 99 88.125 99 77V71C99 70 98 69 97 69Z" fill="white"/>
+          </svg> 
+        </div>
+      </div>
+     <div>
+      <h3 id="P2">Passo 2: {{ instrucao }}</h3>
+     
+     </div>
+     <div>
+      <h2 id="F1" style="text-transform:none; font-size:2em">"{{ frase  }}"</h2>
+     </div>
+      <div>
+        <h3 id="P3">Passo 3: Clique no botão:</h3>
+      </div>
+      <div>
+        <button id="stopButton" disabled>Parar</button>
+      </div>	 
+    </div>
+
+    <script>
+      $(document).ready(function(){
+          $('<script/>',{type:'text/javascript', src:'assets/js/app.js'}).appendTo('head');
+        });
+    </script>
+    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167108513-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-167108513-1');
+    </script>
+  </body>
+</html>

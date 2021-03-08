@@ -1,0 +1,152 @@
+{% extends "template.html" %}
+{% block title %}Estudo SPIRA: Doe sua voz e ajude no diagnóstico da Covid-19{% endblock %}
+{% block head %}
+    {{ super () }}
+{% endblock %}
+{% block body %}
+<div class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="text-block">
+                    <h5>Estudo</h5>
+                    <h1><span>spira</span>
+                        <img style='margin: -10px -150px -50px -10px' src="assets/images/spira.svg" alt="spira">
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container block">
+    <div class="row align-items-center justify-content-center">
+        <div class="col f-size-22 col-10 col-md-6">
+            <p class="text-primary font-weight-bold">1. Este site precisa que você abra o Navegador (Chrome ou Safari)</p>
+            <p class="text-danger font-weight-bold">2. Acesse: https://spira.ime.usp.br</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="banner">
+    <div class="container block">
+        <div class="row justify-content-center">
+            <div class="col col-auto">
+                <div class="text-block">
+                    <div class="br-1 pr-4 d-flex align-items-center"><img src="assets/images/spira.svg" alt="spira"></div>
+                    <div class="pt-5 pt-sm-0 pl-0 pl-sm-4">
+                        <div><b>S</b>istema de detecção </div>
+                        <div><b>P</b>recoce de </div>
+                        <div><b>I</b>nsuficiência </div>
+                        <div><b>R</b>espiratória por meio de análise de </div>
+                        <div><b>Á</b>udio</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="termos">
+    <div class="container block">
+        <div class="row justify-content-center">
+            <div class="col ">
+                <h4 class="text-center mb-5">Termos da sua participação:</h4>
+                <ul class="mb-5">
+                    <li>Você está sendo convidado a participar de um estudo para desenvolver um método automático para detectar pessoas que possam evoluir com problemas respiratórios.
+                    <li>Caso você concorde iremos pedir para que você grave uma ou mais frases pelo computador.</li>
+                    <li>Os dados de sua voz serão analisados por pesquisadores da Universidade de São Paulo de forma anônima.</li>
+                    <li>Nenhum dado pessoal seu será incluído em nenhum documento do estudo.</li></li>
+                </ul>
+                <div class="text-center"><a href="f" class="btn btn-danger" onclick="return checaiOS()">Desejo participar</a></div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="colabs">
+    <div class="container block">
+        <div class="row">
+            <div class="col">
+                <h5 class="text-center mb-4">Uma colaboração:</h5>
+                <div class="colab-logos">
+                    <div><img src="assets/images/logo1.png" alt=""></div>
+                    <div><img src="assets/images/logo2.png" alt=""></div>
+                    <div><img src="assets/images/logo3.png" alt=""></div>
+                    <div><img src="assets/images/fapesp.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5 class="text-center mb-6">Com apoio:</h5>
+                <div class="colab-logos">
+                    <div><img src="assets/images/proreitoriausp.png" alt=""></div>
+                    <div><img src="assets/images/nvidiapb.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5 class="text-center mb-8">Responsáveis:</h5>
+                <div class="colab-logos">
+                        <p>
+                            Anna Sara Levin Shafferman (Co-responsável, área médica), FMUSP<br>
+                            Ester Cerdeira Sabino (Co-responsável, área médica), FMUSP<br>
+                            Marcelo Finger (Coordenador), DCC-IME-USP<br>
+                        </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5 class="text-center mb-8">Pesquisadores:</h5>
+                <div class="colab-logos">
+                        <p>
+                            Alfredo Goldman, DCC-IME-USP<br>
+                            Arnaldo Cândido Júnior, ICMC-USP e UTFPR<br>
+                            Flaviane R. Fernandes Svartman, FFLCH-USP (Linguística)<br>
+                            Marcelo Gomes de Queiroz, DCC-IME-USP<br>
+                            Sandra Maria Aluísio, ICMC-USP<br>
+                        </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5 class="text-center mb-8">Alunos:</h5>
+                <div class="colab-logos">
+                        <p>
+                            Augusto Cesar de Camargo, DCC-IME-USP<br>
+                            Edresson Casanova, ICMC-USP<br>
+                            Murilo Gazzola, ICMC-USP e HIAE<br>
+                            Pedro Leyton Pereira, DCC-IME-USP<br>
+                            Renato Cordeiro, DCC-IME-USP<br>
+                            Thatiane Rosa, DCC-IME-USP<br>
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="colabs">
+    <div class="container block">
+
+    </div>
+</div>
+
+<script>
+function checaiOS() {
+    if(navigator.userAgent.match('CriOS')){    
+        alert('Por favor utilize neste site o navegador Safari. Só ele consegue gravar sons em dispositivos iOS.');
+        return false;
+        }
+    else window.location ="f";
+}
+
+</script>
+{% endblock %}

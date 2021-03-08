@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>SPIRA Audio Check</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        body{
+            color: #47535c;
+        }
+        audio{
+            width: 100%;
+        }
+        @media (max-width:375px){
+            body{
+                font-size: 90%;
+            }
+        }
+        .highlight {
+        text-shadow: 
+            -3px 0px 3px yellow,
+            3px 0px 3px yellow,
+            6px 0px 6px yellow,
+            -6px 0px 6px yellow;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Default form subscription -->
+
+    <form class="py-5" action="form" method="POST" id="myForm" onsubmit="return validateForm()">
+        <div class="container bg-white p-4 p-sm-5 shadow rounded" style="max-width:992px">
+            <div class="row">
+                <div class="col col-6">
+                    <div class="form-group">
+                        <h2>ANOTAR</h2>
+                    </div>                    
+                </div>
+                <div class="col col-6" style="text-align: right;">
+                        <button type="button" class="btn btn-secondary" onclick="location.href='ranking'"  id="aprovar" >Ranking</button>                
+                        <button type="button" class="btn btn-secondary" onclick="location.href='anotacoes'"  id="anotar">Anotações</button>
+                        <button type="button" class="btn btn-success" onclick="window.open('assets/pdf/guideline.pdf','_blank')"  id="aprovar" >Guideline</button>                
+                </div>
+                <div class="col col-12">
+                    <hr class="my-4">
+                    <div class="form-group">
+                        
+                        <label class="font-weight-bold">0. Voz: {{ objects[0]["arquivo"]}}</label>
+
+                        <div>
+                            <audio controls  id="voz-0">
+                                <source src="aud?arquivo={{ objects[0]['arquivo']}}" 
+                                {% if objects[0]['arquivo'][-3:] == 'opus' %}
+                                    type="audio/webm; codecs=opus">
+                                {% else %}
+                                    type="audio/wav">
+                                {% endif %}
+                                
+                                Your browser does not support the audio tag.
+                            </audio>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                </div>
+                <div class="col col-12 col-md-4">
+                    <div class="form-group">
+                        <label class="font-weight-bold" for="idade">1. Idade</label>
+                        <input class="form-control form-control-sm" style="text-align: center"  readonly="readonly" type="text" placeholder="" name="idade" id="idade" value="{{ objects[0]['idade']}}">
+                    </div>
+                </div>
+                <div class="col col-12 col-md-4">
+                    <div class="form-group">
+                        <label for="sexo" class="font-weight-bold">
+                            2. Sexo
+                        </label>
+                        <input class="form-control form-control-sm" style="text-align: center" readonly="readonly" type="text" placeholder="" name="sexo" id="sexo" value="{{ objects[0]['sexo']}}">
+                    </div>
+                </div>
+                <div class="col col-12 col-md-4">
+                    <div class="form-group">
+                        <label for="oxigenacao" class="font-weight-bold">
+                            3. Oxigenação
+                        </label>
+                        <input class="form-control form-control-sm" style="text-align: center"  readonly="readonly" type="text" placeholder="" name="oxigenacao" id="oxigenacao" value="{{ objects[0]['oxigenacao']}}">
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col col-12">
+                    <div class="form-group">
+                        <label for="frase_falada_1" class="font-weight-bold">
+                            4. A frase falada foi:
+                        </label>
+                        <div class="form-check form-check">
+                            <input class="form-check-input" type="radio" name="frase_falada" id="frase_falada_1" value="o_amor_ao_proximo"  onclick="fAprovar()">
+                            <label class="form-check-label" for="frase_falada_1">O amor ao próximo...</label>
+                        </div>
+                        <div class="form-check form-check">
+                            <input class="form-check-input" type="radio" name="frase_falada" id="frase_falada_2" value="batatinha_quando_nasce"  onclick="fAprovar()">
+                            <label class="form-check-label" for="frase_falada_2">Batatinha quando nasce...</label>
+                        </div>
+                        <div class="form-check form-check">
+                            <input class="form-check-input" type="radio" name="frase_falada" id="frase_falada_3" value="parabens_a_voce"  onclick="fAprovar()">
+                            <label class="form-check-label" for="frase_falada_3">Parabéns a você...</label>
+                        </div>
+                        <div class="form-check form-check">
+                            <input class="form-check-input" type="radio" name="frase_falada" id="frase_falada_0" value="outra_frase" onclick="fReprovar()">
+                            <label class="form-check-label" for="frase_falada_0">Não há frase de interesse ou nada gravado.</label>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                </div>
+                <div class="col col-12">
+                    <div class="form-group">
+                        <label for="voz_medico_inicio" class="font-weight-bold">
+                            5. Em que momento o doador começa a falar a frase de interesse corretamente? (em
+                            segundos)
+                        </label>
+                        <input class="form-control form-control-sm" type="text" name="inicio" id="inicio" placeholder="" value="0">
+                    </div>
+                    <hr class="my-4">
+                </div>
+                <div class="col col-12">
+                    <div class="form-group">
+                        <label for="voz_medico_inicio" class="font-weight-bold">
+                            6. Em que momento o doador termina de falar a frase de interesse? (em
+                            segundos)
+                        </label>
+                        <input class="form-control form-control-sm" type="text" name="fim" id="fim" placeholder="" value="">
+                    </div>
+                    <hr class="my-4">
+                </div>
+                <div class="col col-12">
+                    <div class="form-group">
+                        <label for="segunda_voz_1" class="font-weight-bold">
+                            7.Há uma segunda voz no meio da frase de interesse no áudio, fazendo turno de conversa (médico recitando a frase, tirando dúvidas)?  <br>
+                            Desconsidere segundas vozes antes/depois da frase de interesse.
+                        </label>
+                        <div class="d-flex flex-sm-row flex-column">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="segunda_voz" id="segunda_voz_1" value="0">
+                                <label class="form-check-label" for="segunda_voz_1">Não</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="segunda_voz" id="segunda_voz_2" value="1">
+                                <label class="form-check-label" for="segunda_voz_2">Sim</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                </div>
+                <div class="col col-12">
+                    <div class="form-group">
+                        <label for="pausas_longas_1" class="font-weight-bold">
+                            8. Houve pausas longas no áudio por motivos diferentes de respiração (como dificuldade na visão ou de leitura)?<br>
+                        </label>
+                        <div class="d-flex flex-sm-row flex-column justify-content-between">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="pausas_longas" id="pausas_longas_1" value="1">
+                                <label class="form-check-label" for="pausas_longas_1">sem pausas longas / tenho dúvidas</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="pausas_longas" id="pausas_longas_2" value="2">
+                                <label class="form-check-label" for="pausas_longas_2">1 segundo</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="pausas_longas" id="pausas_longas_3" value="3">
+                                <label class="form-check-label" for="pausas_longas_3">2 segundos</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="pausas_longas" id="pausas_longas_4" value="4">
+                                <label class="form-check-label" for="pausas_longas_4">3 segundos</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="pausas_longas" id="pausas_longas_5" value="5">
+                                <label class="form-check-label" for="pausas_longas_5">4 segundos</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                </div>
+                <div class="col col-12">
+                    <div class="form-group">
+                        <label for="pausa_meio_palavras_1" class="font-weight-bold">
+                            9. Houve pausas no meio das palavras?<br>
+                        </label>
+                        <div class="d-flex flex-sm-row flex-column justify-content-between">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="pausa_meio_palavras" id="pausa_meio_palavras_1" value="1">
+                                <label class="form-check-label" for="pausa_meio_palavras_1">sem pausas longas / tenho dúvidas</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="pausa_meio_palavras" id="pausa_meio_palavras_2" value="2">
+                                <label class="form-check-label" for="pausa_meio_palavras_2">1 segundo</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="pausa_meio_palavras" id="pausa_meio_palavras_3" value="3">
+                                <label class="form-check-label" for="pausa_meio_palavrasr_3">2 segundos</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="pausa_meio_palavras" id="pausa_meio_palavras_4" value="4">
+                                <label class="form-check-label" for="pausa_meio_palavras_4">3 segundos</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="pausa_meio_palavras" id="pausa_meio_palavras_5" value="5">
+                                <label class="form-check-label" for="pausa_meio_palavras_5">4 segundos</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                </div>
+                <div class="col col-12">
+                    <div class="form-group">
+                        <label for="omite_repete_1" class="font-weight-bold">
+                            10. A pessoa omite, repete ou substitui palavras ou sílabas?<br>
+                        </label>
+                        <div class="d-flex flex-sm-row flex-column justify-content-between">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="omite_repete" id="omite_repete_1" value="1">
+                                <label class="form-check-label" for="omite_repete_1">0 palavra</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="omite_repete" id="omite_repete_2" value="2">
+                                <label class="form-check-label" for="omite_repete_2">1 palavra</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="omite_repete" id="omite_repete_3" value="3">
+                                <label class="form-check-label" for="omite_repeter_3">2 palavras</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="omite_repete" id="omite_repete_4" value="4">
+                                <label class="form-check-label" for="omite_repete_4">3 ou + palavras</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                </div>
+                <div class="col col-12">
+                    <div class="form-group">
+                        <label for="ruido_fundo_1" class="font-weight-bold">
+                            11. Há ruído de fundo: [batidas, estalos, cliques, chiados, risos, vento, veículos, TV, vozes de enfermerias etc]?
+                        </label>
+                        <div class="d-flex flex-sm-row flex-column justify-content-between">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="ruido_fundo" id="ruido_fundo_1" value="1">
+                                <label class="form-check-label" for="ruido_fundo_1">1: sem ruído</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="ruido_fundo" id="ruido_fundo_2" value="2">
+                                <label class="form-check-label" for="ruido_fundo_2">2: ruído leve</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="ruido_fundo" id="ruido_fundo_3" value="3">
+                                <label class="form-check-label" for="ruido_fundo_3">3: ruído intermediário</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="ruido_fundo" id="ruido_fundo_4" value="4">
+                                <label class="form-check-label" for="ruido_fundo_4">4: ruito forte</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="ruido_fundo" id="ruido_fundo_5" value="5">
+                                <label class="form-check-label" for="ruido_fundo_5">5: ruído muito forte</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                </div>
+                <div class="col col-12">
+                    <div class="form-group">
+                        <label for="ruido_instrumento_1" class="font-weight-bold">
+                           12. Há ruído de instrumento médico?
+                        </label>
+                        <div class="d-flex flex-sm-row flex-column justify-content-between">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="ruido_instrumento" id="ruido_instrumento_1" value="1">
+                                <label class="form-check-label" for="ruido_instrumento_1">1: sem ruído</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="ruido_instrumento" id="ruido_instrumento_2" value="2">
+                                <label class="form-check-label" for="ruido_instrumento_2">2: ruído leve</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="ruido_instrumento" id="ruido_instrumento_3" value="3">
+                                <label class="form-check-label" for="ruido_instrumento_3">3: ruído intermediário</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="ruido_instrumento" id="ruido_instrumento_4" value="4">
+                                <label class="form-check-label" for="ruido_instrumento_4">4: ruído forte</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="ruido_instrumento" id="ruido_instrumento_5" value="5">
+                                <label class="form-check-label" for="ruido_instrumento_5">5: ruído muito forte</label>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                    </div>
+                </div>
+                <div class="col col-12">
+                    <div class="form-group">
+                        <label for="voz_medico_inicio" class="font-weight-bold">
+                            13. Avaliador
+                        </label>
+                        <input class="form-control form-control-sm" type="text" name="humano" id="humano" value="{{ session.get('humano', False) }}" style="text-align: center" readonly="readonly" placeholder="">
+                    </div>
+                    <hr class="my-4">
+                </div>
+                <div class="col col-12">
+                    <div class="form-group">
+                        <label for="obs" class="font-weight-bold">
+                            Observações adicionais. Existe algo que chame a atenção neste áudio que você gostaria de destacar?
+                        </label>
+                        <textarea class="form-control form-control-sm" rows="3" placeholder=""  name="obs" id="obs"></textarea>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col col-6">
+                    <button type="submit" class="btn btn-danger" id="reprovar" onclick="document.getElementById('aprovado').value='0'" >Reprovar</button>                   
+                </div>
+                <div class="col col-6">
+                    <button type="submit" class="btn btn-success" id="aprovar" onclick="document.getElementById('aprovado').value='1'">Aprovar</button>
+                </div>
+            </div>
+        </div>
+        
+    <input type="hidden" name="nrplay" id="nrplay" value="">
+    <input type="hidden" name="aprovado" id="aprovado" value="">
+    <input type="hidden" name="done" id="done" value="1">
+    <input type="hidden" name="arquivo" id="arquivo" value="{{ objects[0]['arquivo']}}">
+    <input type="hidden" name="base" id="base" value="{{ objects[0]['base']}}">
+    <input type="hidden" name="_id_" id="_id_" value="{{ objects[0]['_id']}}">
+    <input type="hidden" name="tupla" id="tupla" value="{{ objects[0]['tupla']}}">
+    </form>
+<script>
+    function fReprovar(){
+        alert('Esta avaliação torna esta Voz reprovada!');
+        document.getElementById('aprovar').disabled = true;
+        document.getElementById('reprovar').focus();
+    }
+    
+    function fAprovar(){
+        document.getElementById('aprovar').disabled = false;
+    }
+
+    function validateForm() {
+        
+        // frase falada
+        var option=document.getElementsByName('frase_falada');
+        if(!(option[0].checked || option[1].checked || option[2].checked || option[3].checked )){ 
+            alert('O campo "frase falada" deve ser selecionado.');
+            option[0].focus();
+            return false
+        }
+
+        // fora de escopo, go!
+        if((option[3].checked)){ 
+            return true
+        }
+
+        // segunda voz
+        var option=document.getElementsByName('segunda_voz');
+        if(!(option[0].checked || option[1].checked )){ 
+            alert('O campo "segunda voz" deve ser selecionado.');
+            option[0].focus();
+            return false
+        }
+
+        // pausas longas
+        var option=document.getElementsByName('pausas_longas');
+        if(!(option[0].checked || option[1].checked || option[2].checked || option[3].checked || option[4].checked )){ 
+            alert('O campo "paulas longas" deve ser selecionado.');
+            option[0].focus();
+            return false
+        }
+
+        // pausas no meio das palavras
+        var option=document.getElementsByName('pausa_meio_palavras');
+        if(!(option[0].checked || option[1].checked || option[2].checked || option[3].checked || option[4].checked )){ 
+            alert('O campo "pausas no meio das palavras" deve ser selecionado.');
+            option[0].focus();
+            return false
+        }
+
+        // omite, repete ou substitui
+        var option=document.getElementsByName('omite_repete');
+        if(!(option[0].checked || option[1].checked || option[2].checked || option[3].checked )){ 
+            alert('O campo "omite, repete ou substitui" deve ser selecionado.');
+            option[0].focus();
+            return false
+        }
+
+        // ruido de fundo
+        var option=document.getElementsByName('ruido_fundo');
+        if(!(option[0].checked || option[1].checked || option[2].checked || option[3].checked || option[4].checked )){ 
+            alert('O campo "ruído de fundo" deve ser selecionado.');
+            option[0].focus();
+            return false
+        }
+
+        // ruido instrumento
+        var option=document.getElementsByName('ruido_instrumento');
+        if(!(option[0].checked || option[1].checked || option[2].checked || option[3].checked || option[4].checked )){ 
+            alert('O campo "ruído de instrumento médico" deve ser selecionado.');
+            option[0].focus();
+            return false
+        }
+
+    }
+    audio = document.getElementsByTagName("audio")[0];
+    audio.onloadeddata = function() {
+            document.getElementById("fim").value = Math.ceil(audio.duration);
+        };
+    $(document).ready(function(){
+        
+    });
+
+</script>
+</body>
+
+</html>

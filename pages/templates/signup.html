@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>SPIRA Audio Check</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+            body{
+                color: #47535c;
+        }
+        audio{
+            width: 100%;
+        }
+        @media (max-width:375px){
+            body{
+                font-size: 90%;
+            }
+        }
+        .highlight {
+            text-shadow: 
+                -3px 0px 3px yellow,
+                3px 0px 3px yellow,
+                6px 0px 6px yellow,
+                -6px 0px 6px yellow;
+            }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Default form subscription -->
+
+    <form class="py-5" action="signup" method="POST" id="myForm" onsubmit="return validateForm()">
+        <div class="container bg-white p-4 p-sm-5 shadow rounded" style="max-width:992px">
+            <div class="row">
+                <div class="col col-12">
+                    <div class="form-group">
+                        <h2> Spira Audio Check - CRIE SEU ACESSO</h2>
+                        <div>
+                           
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                </div>
+                <div class="col col-12 col-md-6">
+                    <div class="form-group">
+                        <label class="font-weight-bold" for="nome">Nome (assinatura nas anotações)</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="" name="nome" id="nome" required>
+                    </div>
+                </div>
+                <div class="col col-12 col-md-6">
+                    <div class="form-group">
+                        <label class="font-weight-bold" for="email">Email (login)</label>
+                        <input class="form-control form-control-sm" type="email" placeholder="" name="email" id="email" required>
+                    </div>
+                </div>
+                <div class="col col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="senha" class="font-weight-bold">
+                            Senha
+                        </label>
+                        <input class="form-control form-control-sm" type="password" placeholder="Mínimo de 6 caracteres, 1 número e 1 letra maiúscula" name="senha" id="senha" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Senha deve ser: 6 dígitos, 1 número e 1 letra maiúscula" required>
+                    </div>
+                </div>
+                <div class="col col-12 col-md-6">
+                    <div class="form-group">
+                        <label for="senha2" class="font-weight-bold">
+                            Repita a senha
+                        </label>
+                        <input class="form-control form-control-sm" type="password" placeholder="" name="senha2" id="senha2">
+                    </div>
+                </div>
+                <div class="col col-12">
+                    <hr class="my-4">
+                    <button type="submit" class="btn btn-success" id="aprovar">Logon</button>
+                    <br><br>
+                    Já tem cadastro? <a href='logon'>Clique aqui</a>.
+                </div>
+            </div>
+        </div>
+    </form>
+<script>
+
+var password = document.getElementById("senha")
+  , confirm_password = document.getElementById("senha2");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Senhas não são iguais.");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
+var email= '{{email}}';
+if (email !='None') {
+    alert('Este Email já foi utilizado.');
+}
+
+</script>
+</body>
+
+</html>

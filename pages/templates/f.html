@@ -1,0 +1,377 @@
+{% extends "template.html" %}
+{% block title %}Estudo SPIRA: Formulário de Coleta de Voz{% endblock %}
+{% block header %}
+    <link href="assets/css/theme.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="assets/js/recorder.js"></script>
+    <style>
+      svg .circle1{
+          animation: rotate 1s linear infinite;
+          transform-origin: center;            
+      }
+
+      @keyframes rotate{
+          0%{
+              transform:rotate(0)
+          }
+          100%{
+          transform:rotate(360deg)
+          }
+      }
+
+      div.mic{
+          text-decoration: none;
+          display: inline-block;
+          width: 64px;
+          height: 64px;
+      }
+  </style>
+{% endblock %}
+{% block body %}
+    <div class="navbar-container">
+    </div>
+    <div class="main-container">
+      <section class="space-sm">
+        <div class="container align-self-start">
+          <div class="row mb-1">
+            <div class="col text-center">
+            </div>
+            <!--end of col-->
+          </div>
+          <!--end of row-->
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-7">
+              <div class="card card-lg text-center">
+                <div class="card-body">
+                  <div class="mb-3">
+                    <h1 class="h2 mb-2">{{ cookie2 }} Diagnóstico da COVID-19</h1>
+                    <span> Ajude no estudo de novas formas de diagnóstico rápido do vírus corona.</span>
+                  </div>
+                  <div class="row no-gutters justify-content-center">
+                    <form class="text-left col-lg-8" action="s" method="POST" id="myForm" onsubmit="return validateForm()">
+                      <div class="form-group">
+                        <h5 style="color:#4582EC">Qual a sua idade?</h5>
+                        <input class="form-control form-control" size="3" name="idade" id="idade" placeholder=""/>
+                      </div>
+                      <div class="form-group">
+                        <h5 style="color:#4582EC">Qual o seu gênero?</h5>
+                          <select class="form-control" id="genero" name="genero">
+                          <option value="">-</option>
+                          <option value="Feminino">Feminino</option>
+                          <option value="Masculino">Masculino</option>
+                          <option value="Não binário">Não binário</option>
+                          <option value="Não desejo informar">Não desejo informar</option>
+                          </select>                        
+                      </div>
+                      <div class="form-group">
+                       <h5 style="color:#4582EC">Você está com algum desses sintomas?</h5>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text pl-4">
+                              <input class="form-check-input" type="checkbox" value="True" name="bfebre" id="bfebre" onclick="funcDisable('bfebre', 'febre')" >Febre
+                            </div>
+                          </div>
+                          <input class="form-control form-control-lg" disabled name="febre" value="" id="febre" placeholder="" />
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text pl-4">
+                              <input class="form-check-input" type="checkbox" value="True" name="btosse" id="btosse" onclick="funcDisable('btosse','tosse')">Tosse
+                            </div>
+                          </div>
+                          <input class="form-control form-control-lg" disabled name="tosse" id="tosse" placeholder=""/>
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text pl-4">
+                              <input class="form-check-input" type="checkbox" value="True" name="bdorDeGarganta" id="bdorDeGarganta" onclick="funcDisable('bdorDeGarganta','dorDeGarganta')">Dor de garganta
+                            </div>
+                          </div>
+                          <input class="form-control form-control-lg" disabled name="dorDeGarganta" id="dorDeGarganta" placeholder=""/>
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text pl-4">
+                              <input class="form-check-input" type="checkbox" value="True" name="bcoriza" id="bcoriza" onclick="funcDisable('bcoriza','coriza')">Coriza
+                            </div>
+                          </div>
+                          <input class="form-control form-control-lg" disabled name="coriza" id="coriza" placeholder=""/>
+                        </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <!-- edited input group: incremented style into div.imput-group-text .pl-4-->
+                            <div class="input-group-text pl-4" style="margin-right: 0; padding-right: 0;">
+                              <input class="form-check-input" type="checkbox" value="1" name="semsin" id="semsin" onclick="gosemsin()">
+                            </div>
+                          </div>
+                          <input class="form-control form-control-lg" disabled type="number" name="nds" id="nds" placeholder=" Não tenho nenhum dos sintomas."/>
+                        </div>
+                      </div>
+                   <div class="form-group">
+                        <h5 style="color:#4582EC">Você está sentindo falta de ar?</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="faltaDeAr" id="bfaltaDeAr1" value="0">
+                              Não
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="faltaDeAr" id="faltaDeAr0" value="1">
+                              Sim
+                          </div>
+                    </div>
+                      <div class="form-group">
+                        <h5 style="color:#4582EC">Você tem alguma das seguintes enfermidades</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="1" onclick='clearSemEnfer()' name="doencaCronicaPulmao" id="doencaCronicaPulmao">                       
+                                Doença crônica do pulmão                          
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="1"  onclick='clearSemEnfer()' name="doencaCoroniana" id="doencaCoroniana">
+                                Doença coronariana
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="1"  onclick='clearSemEnfer()' name="pressaoAlta" id="pressaoAlta">
+                                Pressão alta
+                           </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="1"  onclick='clearSemEnfer()' name="diabetes" id="diabetes">
+                                Diabetes
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" onclick="gosemenfer()" value="1" name="semenfer" id="semenfer">
+                                Não tenho nenhuma das enfermidades.
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <h5 style="color:#4582EC">Grave 3 frases falando próximo ao microfone e sem usar viva voz.</h5>
+                        
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-"></div>
+                            <div class="col">
+                              <button type="button" class="btn btn-lg btn-primary" style="border-color:red;background-color: red;" onclick="showFrase(1)" id="oFrase1">Grave a frase 1</button>                   
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="container">
+                        <div class="row">
+                            <div class="col-"></div>
+                            <div class="col"><br>
+                              <button type="button"  class="btn btn-lg btn-primary showModal"  style="border-color:red;background-color: red;"  onclick="showFrase(2)" id="oFrase2">Grave a frase 2</button>                     
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-"></div>
+                            <div class="col"><br>
+                              <button type="button"  class="btn btn-lg btn-primary showModal" style="border-color:red;background-color: red;"  onclick="showFrase(3)" id="oFrase3">Grave a frase 3</button>                    
+                            </div>
+                            </div>
+                       </div>
+
+                      </div>
+                      <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-lg btn-primary">Enviar Pesquisa</button>
+                      </div>
+                    
+
+                    </form>
+                  </div>
+                  <!--end of row-->
+                </div>
+              </div>
+            </div>
+            <!--end of col-->
+          </div>
+          <!--end of row-->
+        </div>
+        <!--end of container-->
+      </section>
+      <!--end of section-->
+    </div>
+
+    <section class="space-sm">
+        <div class="container">
+          <h5>Uma colaboração:</h5>
+            <div class="row">
+                <div class="w-100"></div>
+                <div class="w-100"></div>
+                <div class="col-12 text-center">
+                    <ul class="list-inline list-inline-large">
+                      <li class="list-inline-item">
+                        <img alt="Image" src="assets/images/ime.png" />
+                      </li>
+                      <li class="list-inline-item">
+                        <img alt="Image"  src="assets/images/fmusp.png">
+                      </li>
+                      <li class="list-inline-item">
+                        <img alt="Image" src="assets/images/usp.png" />
+                      </li>
+                    </ul>
+                  </div>
+              </div>
+        </div>
+    </section>
+
+
+<!-- Modal 1:  Check Mic -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModal1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+            <div style="width: 100%;">
+              <div>
+                <h3 id="P11"><b>Passo 1</b>: Para doar sua voz use o Microfone do celular ou do seu micro.</h3><br>
+              </div>
+            <div>
+              <h3 id="P12"><b>Passo 2</b> Fale próximo ao Microfone.</h3>   <br>
+            </div>
+              <div>
+                <h3 id="P13"><b>Passo 3</b> Clique no botão abaixo e permita acesso ao seu Microfone.</h3><br>
+              </div>
+              <div>
+                <button id="checkMicButton" onclick="checkMic()">Clique aqui para Permitir</button><br>
+                E clique também em Permitir na segunda janela que irá aparecer.
+              </div>	 
+            </div>      
+      </div>
+    </div>
+  </div>
+</div> 
+<!-- /#myModal -->
+
+<!-- Modal 2:  Gravar Voz -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModal2" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div style="width: 100%;">
+                <div>
+                  <h3 id="P21"><b>Passo 1</b> Fale próximo ao microfone e sem usar viva voz clique no botão:</h3>
+                </div>
+                <div>
+                    <div id="btnR2">
+                        <button id="recordButton">Gravar</button>  
+                    </div> 
+                    <div class="mic" id="mic2" style="display:none">                    
+                      <svg viewBox="0 0 154 154" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="77" cy="77" r="64" fill="#FF0000"/>
+                          <path class="circle1" d="M150.632 77C152.492 77 154.008 78.5087 153.926 80.3671C153.472 90.7466 150.921 100.939 146.414 110.326C141.908 119.713 135.549 128.078 127.734 134.923C126.335 136.149 124.21 135.909 123.046 134.458V134.458C121.883 133.006 122.123 130.892 123.517 129.661C130.547 123.451 136.272 115.888 140.342 107.411C144.412 98.9337 146.734 89.7367 147.183 80.3669C147.272 78.5089 148.772 77 150.632 77V77Z" fill="#FF0000"/>
+                          <path d="M77 89C83.625 89 89 83.75 89 77V57C89 50.375 83.625 45 77 45C70.25 45 65 50.375 65 57V77C65 83.75 70.25 89 77 89ZM97 69H95C93.875 69 93 70 93 71V77C93 86.375 84.875 93.875 75.375 93C67 92.125 61 84.75 61 76.375V71C61 70 60 69 59 69H57C55.875 69 55 70 55 71V76.125C55 87.25 62.875 97.25 74 98.75V103H67C65.875 103 65 104 65 105V107C65 108.125 65.875 109 67 109H87C88 109 89 108.125 89 107V105C89 104 88 103 87 103H80V98.875C90.625 97.375 99 88.125 99 77V71C99 70 98 69 97 69Z" fill="white"/>
+                      </svg> 
+                    </div>
+                </div>
+                <div>
+                   <br> <h3 id="P22"></h3>
+                </div>
+                <div>
+                  <h2 id="F2" style="text-transform:none; font-size:2em"></h2><br>
+                </div>
+                <div>
+                  <h3 id="P23"><b>Passo 3</b> Clique no botão:</h3>
+                </div>
+                <div>
+                  <button id="stopButton" disabled>Parar</button>
+                </div>	 
+        </div>  
+      </div>
+    </div>
+  </div>
+</div> 
+<!-- /#myModal -->
+
+
+
+<!-- Modal 3:  Enviando Arquivo -->
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModal3" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+            <div style="width: 100%;">
+              <div>
+                <h3 id="P1"></h3>
+              </div>
+              <div>
+                  <div class="mic" id="mic3" style="display:none">                    
+                    <svg viewBox="0 0 154 154" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="77" cy="77" r="64" fill="#FF0000"/>
+                        <path class="circle1" d="M150.632 77C152.492 77 154.008 78.5087 153.926 80.3671C153.472 90.7466 150.921 100.939 146.414 110.326C141.908 119.713 135.549 128.078 127.734 134.923C126.335 136.149 124.21 135.909 123.046 134.458V134.458C121.883 133.006 122.123 130.892 123.517 129.661C130.547 123.451 136.272 115.888 140.342 107.411C144.412 98.9337 146.734 89.7367 147.183 80.3669C147.272 78.5089 148.772 77 150.632 77V77Z" fill="#FF0000"/>
+                        <path d="M77 89C83.625 89 89 83.75 89 77V57C89 50.375 83.625 45 77 45C70.25 45 65 50.375 65 57V77C65 83.75 70.25 89 77 89ZM97 69H95C93.875 69 93 70 93 71V77C93 86.375 84.875 93.875 75.375 93C67 92.125 61 84.75 61 76.375V71C61 70 60 69 59 69H57C55.875 69 55 70 55 71V76.125C55 87.25 62.875 97.25 74 98.75V103H67C65.875 103 65 104 65 105V107C65 108.125 65.875 109 67 109H87C88 109 89 108.125 89 107V105C89 104 88 103 87 103H80V98.875C90.625 97.375 99 88.125 99 77V71C99 70 98 69 97 69Z" fill="white"/>
+                    </svg> 
+                  </div>
+              </div>
+              <div>
+                 <br> <h3 id="P2"></h3>
+              </div>
+              <div>
+                <h2 id="F31" style="text-transform:none; font-size:2em"></h2><br>
+              </div>
+              <div>
+                <h3 id="P3"></h3>
+              </div>
+              <div>
+                <button id="nextStepdButton2" onclick="hideModal3()" disabled>Próxima etapa</button><br>
+              </div>	 
+            </div>      
+      </div>
+    </div>
+  </div>
+</div> 
+<!-- /#myModal -->
+
+
+<script>
+var fraseN = 0;
+
+$(document).ready(function() {
+  // checa cookie
+  if (getCookie('flaskapp')==''){
+          window.location = '/';
+  }
+
+  
+  // Modal 1 - Permissão do Mic
+  $("#myModal1").modal("show");
+});
+
+    
+// Função que checa e pede permissão ao Mic
+function checkMic(){
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+            .then( function(stream) {
+                alert("Obrigado, agora preencha o formulário abaixo.")
+                $("#myModal1").modal("hide");
+            })
+            .catch(function(err) {
+            alert('Conecte ou dê pemissão de acesso a um Microfone.');
+            // $("#myModal").modal("hide");
+            // window.location = '/';       
+            });
+            }
+    }  
+
+// Modal 2 - Gravacao de Voz
+function showFrase(idFrase){
+  fraseN = idFrase;
+  $("#myModal2").modal("show"); 
+  var frases = [ '', 'O amor ao próximo ajuda a enfrentar o coronavírus com a força que a gente precisa.', 'Batatinha quando nasce, espalha rama pelo chão.' , 'Parabéns a você, nesta data querida, muitas felicidades, muitos anos de vida.'];
+  var instrucoes = [ '','Leia a frase:','Leia a frase:', 'Cante ou Leia a frase:'];
+  document.getElementById("P22").innerHTML = "<b>Passo 2</b> " + instrucoes[idFrase];
+  document.getElementById("F2").innerHTML = frases[idFrase];
+ }    
+
+
+ // Modal 2 - Gravacao de Voz
+function hideModal3(){
+  $("#myModal3").modal("hide");
+
+}
+</script>
+    
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/formValidation.js"></script>
+{% endblock %}

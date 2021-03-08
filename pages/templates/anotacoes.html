@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <title>SPIRA Audio Check</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <style>
+        body{
+            color: #47535c;
+        }
+        audio{
+            width: 100%;
+        }
+        @media (max-width:900px){
+            body{
+                font-size: 90%;
+            }
+        }
+            .highlight {
+                text-shadow: 
+                -3px 0px 3px yellow,
+                3px 0px 3px yellow,
+                6px 0px 6px yellow,
+                -6px 0px 6px yellow;
+            }
+        </style>
+
+</head>
+
+<body class="bg-light">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+   
+    <form class="py-5" action="/signup" method="POST" id="myForm" onsubmit="return validateForm()">
+
+    <div class="container bg-white p-4 p-sm-5 shadow rounded" style="max-width:992px">
+        <div class="row">
+                <div class="col col-8">
+                    <div class="form-group">
+                        <h2>ANOTAÇÕES</h2>
+                    </div>                    
+                </div>
+                <div class="col col-4" style="text-align: right;">
+                        <button type="button" class="btn btn-secondary" onclick="location.href='ranking'"  id="anotar">Ranking</button>
+                            
+                </div>
+                    <div class="col col-12">
+                    <hr class="my-4">
+                    <table id="example" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">Tipo</th>
+                                <th style="text-align: center;">Arquivo</th>                                
+                                <th style="text-align: center;">Idade</th>
+                                <th style="text-align: center;">Sexo</th>
+                                <th style="text-align: center;">Ox</th>
+                                <th style="text-align: center;">Avaliador</th>
+                                <th style="text-align: center;">OK?</th>
+                                <th style="text-align: center;">Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for object in objects %} 
+                                <tr>                   
+                                    
+                                    {% if object["done"] == "0" %}
+                                        <td style="text-align: center;">🧠{{ object["base"] }}</td>    
+                                        <td style="text-align: center;"><a href='form?arquivo={{ object["arquivo"] }}' style="font-size:10px">{{ object["arquivo"] }}</a></td>
+                                    {% else %}
+                                        <td style="text-align: center;">👊{{ object["base"] }}</td>
+                                        <td style="text-align: center;"><spam onclick='alert("{{ object }}")'style="font-size:10px">{{ object["arquivo"] }}</spam></td>
+                                    {% endif %}
+                                    <td style="text-align: center;">{{ object["idade"] }}</td>
+                                    <td style="text-align: center;">{{ object["sexo"] }}</td>
+                                    <td style="text-align: center;">{{ object["oxigenacao"] }}</td>
+                                    <td style="text-align: center;">{{ object["humano"] }}</td>
+                                    <td style="text-align: center;">{{ object["aprovado"] }}</td>
+                                    <td style="text-align: center;">{{ object["data"] }}</td>
+                                </tr>
+                            {% endfor %}  
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+</form>
+    
+    {% for object in objects %} 
+     {{ object }}
+    {% endfor %}
+<script>
+    $(document).ready(function() {
+    $('#example thead tr').clone(true).appendTo( '#example thead' );
+    $('#example thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text"  style="font-size:10px" size="5" placeholder="Search" />' );
+ 
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+
+    var table = $('#example').DataTable( {
+        orderCellsTop: true,
+        fixedHeader: true,
+        "order": [[ 6, "asc" ]]
+    } );
+} );
+</script>
+</body>
+</html>

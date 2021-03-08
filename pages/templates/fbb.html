@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <title>load website</title>
+    <style>
+        body{
+            background-color: #233435;
+            font-family: sans-serif;
+            font-size: 14px;
+            background: url(assets/images/fbbg.jpg) no-repeat center /cover;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .bubble{
+            font-size: 21px;
+            width: 90%;
+            max-width: 280px;
+            text-align: right;
+            line-height: 1.4;
+            position: absolute;
+            background-color: rgba(255,255,255,.9);
+            border-radius: 6px;
+            padding: 1rem;
+            color: #561A9A;
+            right: 10px;
+            top: 16px;
+        }
+
+        .bubble:before{
+            content: '';
+            display: block;
+            width: 0px;
+            height: 0px;
+            border-top: 10px solid transparent;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 10px solid rgba(255,255,255,.9);
+            position: absolute;
+            bottom: 100%;
+            right: 13px;
+        }
+
+        .chrome abbr:before{
+            content: '{{ browser }}';
+        }
+
+        .text-box{
+            background-color: rgba(0,0,0,.5);
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+            padding: 1rem;
+            font-size: 24px;
+            left: 0;
+            color: white;
+            width: 100%;
+        }
+
+        .text-box p{
+            font-size: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <!--
+         se for ios aplicar a clasee .safari
+        se for android aplicar a classe .chrome 
+    -->
+    <div class="bubble chrome">
+        <b style="color:red">Toque acima no botão ...</b> <br>e escolha:
+        <div style="font-size: 30px"><b>Abrir no <abbr></abbr></b></div>
+        <em>Para doar sua voz.</em>
+    </div>
+    <div class="text-box">
+        Doe sua voz e ajude no diagnóstico da Covid-19
+        <p>
+            Existe um grande desafio na triagem de pacientes com a COVID-19 e sua voz pode ajudar.
+        </p>
+    </div>    
+</body>
+</html>

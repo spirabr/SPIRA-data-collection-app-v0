@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/dbootstrap_skin.css">
+
+    <title>Research Proposal SPIRA Study</title>
+</head>
+<body>
+    <div class="content">
+        <div class="container-fluid-adjusted">
+            <div class="hero">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-block">
+                                <h5>Estudo</h5>
+                                <h1><span>spira</span>
+                                    <img src="assets/images/spira.svg" alt="spira">
+                                </h1>
+                                <p>Doe sua voz e ajude no diagnóstico da Covid-19</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container block">
+                <div class="pre-header">
+                    <strong>Summary:</strong>
+                    <span class="short-text"><strong>Post-do @ SPIRA: Early Detection
+                        System for Respiratory Failure through Audio
+                        Analysis</strong>
+                    </span>
+                    <span>Coordinator: Marcelo Finger (DCC-IME-USP)</span>
+                    <span>Computer Science Department</span>
+                    <span>Institute of Mathematics and Statistics</span>
+                    <span>University of São Paulo</span>
+                </div>
+                <div class="content-instruction">
+                    <span class="title-item">Summary</span>
+                    <p>The aim of this project is to develop a tool that can perform an early detection of subjects with
+                        respiratory insufficiency due to COVID-19 using speech audio data. For this, audio records of
+                        infected people, as well as normal people, was collected recording differences associated with O2
+                        -
+                        saturation and respiratory rate that allowed the two groups to be distinguished. The proposed
+                        automatic classification tool will be based on artificial intelligence techniques, signal processing
+                        and machine learning. Initially the tool it will help screening patients who need to seek medicalhospital assistance. In a second phase, the tool can help remote medicine systems to continuously
+                        monitor patients, allowing the follow-up of the evolution of hospitalized patients.
+                    </p>
+                    <p><span class="blue-text">Related Project</span>: Artificial Intelligence Center (C4AI), Engineering Research Center of FapespIBM Proc.: 2019/07665-4.</p>
+                    <span class="title-item mt-5">Motivation</span>
+                    <p>The COVID-19 pandemic has placed most of the population of the major cities of Brazil in
+                        isolation, the so-called social distancing. Large agglomerations of people can facilitate the spread of
+                        the virus, and this is particularly worrisome in the case of agglomerations in hospitals and health
+                        centers. In this case, the sorting process should be efficient and, if possible, remote.
+                    </p>
+                    <p>It is essential to prevent people that with minor or misleading symptoms that may not justify
+                        hospitalization from being exposed to the virus. On the other hand, hospital patient screening
+                        systems are overloaded with people with minor symptoms, due to the large influx of people seeking
+                        clarification about their health situation. Even if these patients received consultation by
+                        telemedicine, they could rapidly evolve into respiratory insufficiency. Monitoring the patient
+                        remotely, frequently and automatically is the best way to combine respect for social distancing and
+                        patient safety. An automatic system for early detection of pulmonary infection through remote audio
+                        analysis comes to both meet the interests of the population and relieve the burden of the medical
+                        screening and health infrastructure service.
+                    </p>
+                    <span class="title-item">Objectives</span>
+                    <p>This proposal aims to develop a remote audio processing system to classify speakers in two
+                        categories: those who should/should not be hospitalized. This system will employ modern
+                        techniques of artificial intelligence, audio processing, automatic learning and deep learning. For
+                        this, the following steps must be accomplished.
+                    </p>
+                    <ul class="list-style-none">
+                        <li>1. Creation of a database of audios containing speech records of both hospitalized patients
+                            due to COVID-19 and healthy people who did not need hospitalization.
+
+                            <ul class="list-style-none">
+                                <li>a. Collection of audio data and other information from COVID-19 patients,
+                                    preferably done by health professional in hospitals (covidário).
+                                </li>
+                                <li>b. Data collection from asymptomatic people or people with symptoms that do not
+                                    require hospitalization. (sugiro adicionar – que foi coletado via Plataforma)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>2. Development of artificial intelligence algorithms and audio processing necessary for the
+                            training and execution of classifier that will screen patient audios.
+                        </li>
+                        <li>3. Implantation of an automatic audio system based on support audio classifier to support the
+                            patient screening system.
+                        </li>
+                    </ul>
+                    <strong class="mt-5">Scenario of possible use of an automatic classifier</strong>
+                    <p>We present a possible scenario for the use of an automatic classifier, in which the automated tool is
+                        not the final decision maker of the hospitalization decision. Consider an interface implemented
+                        through a communication application, such as WhatsApp, which can interact with the general
+                        public.
+                    </p>
+                    <p>A user presenting some symptoms starts an interaction session with the application, answering
+                        questions such as age and symptoms, and at the end the user records an audio clip uttering a
+                        sentence that forces breathing several times during the recording. If the voice emission does not
+                        indicate the need for hospitalization, a message could be sent to the user informing him to wait for
+                        the symptoms to progress and to contact the system again a few hours later. If the audio indicates
+                        the need for the user's hospitalization, a double alarm could be issued.
+                    </p>
+                    <p>The first recipient of the alarm is a healthcare professional responsible for screening patients, who
+                        will be advised that they should contact the patient who presents signs compatible with the need for
+                        hospitalization. The second recipient is the patient himself, who will be advised that he must wait
+                        for a contact from a health professional soon.
+                    </p>
+                    <p>Due to the possibility of the system generating both false positives and false negatives, the issuing
+                        of an alarm should not be the only indication of hospitalization, but rather the judgment of a health
+                        professional based on the patient's data (symptoms, audio recording and automatic classification) of
+                        the system). Similarly, even without the alarm, the health professional must maintain autonomy to
+                        decide on hospitalization, even if the system has not considered that the patient requires
+                        hospitalization.
+                    </p>
+                    <a href="assets/pdf/SPIRAGeneralInfo.pdf" class="mt-5"><html lang="pt"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/pbootstrap_skin.css">
+
+    <title>Research Proposal SPIRA Study</title>
+    <body>
+        <div class="content">
+            <div class="container-fluid-adjusted">
+                <div class="hero">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="text-block">
+                                    <h5>Estudo</h5>
+                                    <h1><span>spira</span>
+                                        <img src="assets/images/spira.svg" alt="spira">
+                                    </h1>
+                                    <p>Doe sua voz e ajude no diagnóstico da Covid-19</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container block">
+                    <div class="content-instruction">
+                        <span class="mb-5 mt-5">[Portuguese version below / Versão em Português abaixo]</span>
+                        <p>The SPIRA Project (aiming at developing a system for early detection of respiratory insufficiency
+                            based on audio analysis), hosted by the University of São Paulo, Brazil and funded by the São Paulo
+                            Research Foundation (FAPESP), is offering a post-doctoral fellowship for recent PhDs with
+                            outstanding research potential for the development of research activities in the interdisciplinary field
+                            between Artificial Intelligence, Signal Processing and Medicine.
+                        </p>
+                        <p>The research will involve collaborations with groups and laboratories associated to the SPIRA Project.
+                            The research to be developed by the post-doc fellow shall be strictly related to ongoing research lines
+                            developed by the SPIRA teams. The project is based at the main USP campus (São Paulo).
+                        </p>
+                        <span>We seek candidates capable to develop independent research in at least one of the research lines below:
+                        </span>
+                        <div>
+                            <ul class="list-style-none">
+                                <li>- Machine learning and deep learning models;</li>
+                                <li>- Acoustic and speech signal processing.</li>
+                            </ul>
+                        </div>
+                        <p>Candidates to the first research line are expected to have received their PhD degrees recently and are
+                            required to have a strong background in Artificial Intelligence and experience in the practical
+                            application of deep learning models in classification problems involving big data.
+                        </p>
+                        <p>Candidates to the first research line are expected to have received their PhD degrees recently and are
+                            required to have a strong background in the theory of Signal Processing and experience in the
+                            extraction and analysis of acoustic features and classification of acoustic and speech signals.
+                        </p>
+                        <p>Previous experience with multidisciplinary research teams is welcome for all the above research lines.
+                        </p>
+                        <p>This opportunity is open to candidates of any nationality. The fellowship is competitive at international
+                            level, and fellows benefit from extra funds for travel and research expenses plus limited support for
+                            relocation expenses. The selected candidate will be awarded a FAPESP Post-Doctoral fellowship in the
+                            amount of R$ 7,373.10 monthly plus a research contingency fund, equivalent to 15% of the annual
+                            value of the fellowship, which should be spent in items directly related to the research activity. The
+                            initial period of the position lasts for 12 months, with possible renovations for one more year. For
+                            further information on FAPESP post-doctoral fellowships, please refer to <a href="https://fapesp.br/en/postdoc">https://fapesp.br/en/postdoc</a>. Special
+                            attention is requested to Items 6 and 7 (Candidate’s requirements and obligations).
+                        </p>
+                        <span class="mt-5"><strong>Application Instructions:</strong></span>
+                        <p>Instruction of applicants are available at <a href="https://spira.ime.usp.br/coleta/postdoc">spira.ime.usp.br/postdoc.</a> ACandidates are encouraged to apply
+                            at their earliest convenience until October 31st, 2020. Appointments are expected to start by January
+                            2nd, 2021. The following documents and information are requested (please refer to the page above
+                            further details):
+                        </p>
+                        <div>
+                            <ul>
+                                <li>Summary of the CV, in the FAPESP format (see <a href="https://fapesp.br/en/6351/instructions-for-the-elaboration-of-a-curricular-summary"> www.fapesp.br/en/6351</a> for instructions);</li>
+                                <li>List of publications, with links to those available online;</li>
+                                <li>A summary of the research plan for the next year, up to 5 pages length. It should explicitly state
+                                    for which of the above profiles the candidate is applying. It should also address its place within
+                                    the framework of the SPIRA Project (<a href="http://spira.ime.usp.br/description">spira.ime.usp.br/description</a>).
+                                </li>
+                                <li>Pointers to other research related output, such as software, web pages, and so forth. Candidates
+                                    should be willing to send copies of publications, if requested;
+                                </li>
+                                <li>Any further information deemed relevant to the application.</li>
+                            </ul>
+                        </div>
+                        <p>In addition to the above, we require at least 2 recommendation letters, which should be mailed by the
+                            recommenders directly to mfinger@ime.usp.br.
+                        </p>
+                    </div>
+
+                    <div class="content-instruction">
+                        <span class="mb-5 mt-5">[Portuguese version below / Versão em Português abaixo]</span>
+                        <p>O Estudo SPIRA (Sistema de detecção Precoce de Insuficiência Respiratória por meio de análise de
+                            Áudio), sediado na Universidade de São Paulo e financiado pela Fundação de Amparo à Pesquisa do
+                            Estado de São Paulo (FAPESP), oferece uma bolsa de pós-doutorado para recém-doutores com
+                            destacado potencial de pesquisa para desenvolvimento de atividades de pesquisa na área de interface
+                            entre Inteligência Artificial, Processamento de Sinais e Medicina.
+                        </p>
+                        <p>A pesquisa envolverá colaborações com grupos e laboratórios associados ao Estudo SPIRA. A pesquisa
+                            a ser desenvolvida pelo bolsista de pós-doutorado deve estar estritamente relacionada às linhas de
+                            pesquisa em andamento desenvolvidas pelas equipes do SPIRA. O projeto está sediado no campus da
+                            USP de São Paulo.
+                        </p>
+                        <span>Os candidatos devem ser capazes de realizar pesquisas independentes em uma das linhas de pesquisa
+                            abaixo:
+                        </span>
+                        <div>
+                            <ul class="list-style-none">
+                                <li>- Aprendizado de máquina e modelos de aprendizado profundo;</li>
+                                <li>- Processamento de sinais acústicos e de fala.</li>
+                            </ul>
+                        </div>
+                        <p>Os candidatos à primeira linha de pesquisa devem ser recém-doutores com excelente potencial de
+                            pesquisa e com formação sólida em Inteligência Artificial e experiência na aplicação prática de
+                            modelos de aprendizado profundo em problemas de classificação no contexto de big data.
+                        </p>
+                        <p>Os candidatos à segunda linha de pesquisa devem ser recém-doutores com excelente potencial de
+                            pesquisa e com formação sólida na teoria de Processamento de Sinais e experiência em extração e
+                            análise de características acústicas e classificação de sinais acústicos e de fala.
+                        </p>
+                        <p>A experiência anterior com equipes de pesquisa multidisciplinares é bem-vinda para as duas linhas de
+                            pesquisa acima.
+                        </p>
+                        <p>A vaga está aberta a brasileiros e estrangeiros. Candidatos de fora de São Paulo poderão receber auxílio
+                            para despesas de mudança e instalação. O valor atual da bolsa de pós-doutoramento da FAPESP é de
+                            R$ 7.373,10, além de recursos adicionais de reserva técnica equivalente a 15% do valor anual da bolsa
+                            para despesas associadas ao trabalho de pesquisa. A extensão inicial das bolsas é de 12 meses, com a
+                            possibilidade de renovação por mais um ano. Para mais informações sobre as bolsas de Pós-Doutorado
+                            FAPESP, por favor acesse <a href="http://fapesp.br/bolsas/pd">fapesp.br/bolsas/pd</a>. Pede-se especial atenção aos Itens 6.1 e 7.1 (Requisitos
+                            do candidato para a solicitação e Condições e obrigações exigidas do bolsista).
+                        </p>
+                        <span class="mt-5"><strong>Inscrições:</strong></span>
+                        <p>As instruções para a inscrição de candidatos podem ser encontradas nesta página
+                            spira.ime.usp.br/postdoc. As inscrições estarão abertas até 31 de outubro de 2020. Os candidatos
+                            selecionados iniciarão suas atividades em 2° de janeiro de 2021. Os seguintes documentos e
+                            informações são solicitados (consulte a página de instruções para mais detalhes):
+                        </p>
+                        <div>
+                            <ul>
+                                <li>Súmula Curricular, em formato FAPESP (visite <a href="http://fapesp.br/sumula">fapesp.br/sumula</a> para instruções);</li>
+                                <li>Lista de publicações, com links para as publicações disponíveis online;</li>
+                                <li>Um resumo do plano de pesquisa, de até 5 páginas, indicando explicitamente em quais dos
+                                    perfis acima o plano se encaixa, e discutindo detalhadamente como o plano se enquadra no
+                                    projeto de pesquisa do Estudo SPIRA (<a href="http://spira.ime.usp.br/description">spira.ime.usp.br/description</a>).
+                                </li>
+                                <li>Informar outras pesquisas relacionadas, tais como software, páginas da web, etc. Os candidatos
+                                    devem enviar cópias das publicações, caso seja solicitado;
+                                </li>
+                                <li>Informações adicionais consideradas relevantes para a inscrição.</li>
+                            </ul>
+                        </div>
+                        <p>Além dos documentos relacionados, são exigidas ao menos duas cartas de recomendação, que devem
+                            ser enviadas diretamente para mfinger@ime.usp.br.
+                        </p>
+                        <a href="assets/pdf/PosDocSPIRACall.pdf" class="mt-5">Download PDF</a>
+                    </div>
+                </div>
+                
+                
+                <div class="banner">
+                    <div class="container block">
+                        <div class="row justify-content-center">
+                            <div class="col col-auto">
+                                <div class="text-block">
+                                    <div class="br-1 pr-4 d-flex align-items-center"><img src="assets/images/spira.svg" alt="spira"></div>
+                                    <div class="pt-5 pt-sm-0 pl-0 pl-sm-4">
+                                        <div><b>S</b>istema de detecção </div>
+                                        <div><b>P</b>recoce de </div>
+                                        <div><b>I</b>nsuficiência </div>
+                                        <div><b>R</b>espiratória por meio de análise de </div>
+                                        <div><b>Á</b>udio</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        
+
+    </body>
+</html></a>
+                </div>
+            </div>
+            
+            
+            <div class="banner">
+                <div class="container block">
+                    <div class="row justify-content-center">
+                        <div class="col col-auto">
+                            <div class="text-block">
+                                <div class="br-1 pr-4 d-flex align-items-center"><img src="assets/images/spira.svg" alt="spira"></div>
+                                <div class="pt-5 pt-sm-0 pl-0 pl-sm-4">
+                                    <div><b>S</b>istema de detecção </div>
+                                    <div><b>P</b>recoce de </div>
+                                    <div><b>I</b>nsuficiência </div>
+                                    <div><b>R</b>espiratória por meio de análise de </div>
+                                    <div><b>Á</b>udio</div>
+                                </div>
+            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+</body>
+</html>

@@ -1,0 +1,864 @@
+
+<!doctype html>
+<html lang="pt-BR" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<link rel="pingback" href="https://velhobit.com.br/xmlrpc.php" />
+
+<!-- Anuncio Mobile-->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+	google_ad_client: "ca-pub-7791390898550663",
+	enable_page_level_ads: true
+  });
+</script>
+
+	
+	
+<!--Site Title-->
+<title>
+Como tirar uma foto usando a Webcam (Javascript + HTML)?</title>
+
+<!--Descrição-->
+<meta name="description" content="Com o HTML5 podemos utilizar recursos de hardware em nossas páginas. Este tutorial mostra como usar Javascript e PHP para salvar screenshots da webcam."/>
+
+
+
+<!--CSS-->
+<link rel="stylesheet"  href="https://velhobit.com.br/wp-content/themes/newbit/style.css"/>
+
+<!--icons-->
+<link rel="apple-touch-icon" sizes="57x57" href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/favicon-16x16.png">
+<link rel="manifest" href="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="https://velhobit.com.br/wp-content/themes/newbit/assets/icons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+<!--fb-->
+<meta property="fb:app_id" content="1566786350223509" />
+
+<!--google-->
+<meta name="google-site-verification" content="dz4pMHQjzFnzsXZqNLi_QVpNLCvY5kstsYRmG59KFJU" />
+
+<!--script-->
+
+	<!-- This site is optimized with the Yoast SEO plugin v14.2 - https://yoast.com/wordpress/plugins/seo/ -->
+	<meta name="description" content="Com o HTML5 podemos utilizar recursos de hardware em nossas páginas. Este tutorial mostra como usar Javascript e PHP para salvar screenshots da webcam." />
+	<meta name="robots" content="index, follow" />
+	<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+	<link rel="canonical" href="https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html" />
+	<meta property="og:locale" content="pt_BR" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Como tirar uma foto usando a Webcam (Javascript + HTML)? &ndash; Velho Bit" />
+	<meta property="og:description" content="Com o HTML5 podemos utilizar recursos de hardware em nossas páginas e aplicações web. Este tutorial mostra como usar Javascript e PHP para salvar screenshots da webcam em nosso servidor." />
+	<meta property="og:url" content="https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html" />
+	<meta property="og:site_name" content="Velho Bit" />
+	<meta property="article:publisher" content="https://www.facebook.com/Velho-Bit-130444874326380/" />
+	<meta property="article:author" content="https://www.facebook.com/profile.php?id=100008652127063" />
+	<meta property="article:published_time" content="2019-01-19T20:07:22+00:00" />
+	<meta property="article:modified_time" content="2019-01-21T20:38:48+00:00" />
+	<meta property="og:image" content="https://velhobit.com.br/wp-content/uploads/2019/01/camera-f.jpg" />
+	<meta property="og:image:width" content="890" />
+	<meta property="og:image:height" content="510" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:creator" content="@velhobit" />
+	<meta name="twitter:site" content="@velhobit" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://velhobit.com.br/#organization","name":"Velho Bit","url":"https://velhobit.com.br/","sameAs":["https://www.facebook.com/Velho-Bit-130444874326380/","https://instagram.com/velhobit","https://twitter.com/velhobit"],"logo":{"@type":"ImageObject","@id":"https://velhobit.com.br/#logo","inLanguage":"pt-BR","url":"https://velhobit.com.br/wp-content/uploads/2017/12/capa.jpg","width":851,"height":315,"caption":"Velho Bit"},"image":{"@id":"https://velhobit.com.br/#logo"}},{"@type":"WebSite","@id":"https://velhobit.com.br/#website","url":"https://velhobit.com.br/","name":"Velho Bit","description":"Artigos, Not\u00edcias e Tutoriais sobre Web Design, Design Gr\u00e1fico, Desenvolvimento e Programa\u00e7\u00e3o Web... e um tico de games","publisher":{"@id":"https://velhobit.com.br/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://velhobit.com.br/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"pt-BR"},{"@type":"ImageObject","@id":"https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html#primaryimage","inLanguage":"pt-BR","url":"https://velhobit.com.br/wp-content/uploads/2019/01/camera.jpg","width":"400","height":"400"},{"@type":"WebPage","@id":"https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html#webpage","url":"https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html","name":"Como tirar uma foto usando a Webcam (Javascript + HTML)? &ndash; Velho Bit","isPartOf":{"@id":"https://velhobit.com.br/#website"},"primaryImageOfPage":{"@id":"https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html#primaryimage"},"datePublished":"2019-01-19T20:07:22+00:00","dateModified":"2019-01-21T20:38:48+00:00","description":"Com o HTML5 podemos utilizar recursos de hardware em nossas p\u00e1ginas. Este tutorial mostra como usar Javascript e PHP para salvar screenshots da webcam.","inLanguage":"pt-BR","potentialAction":[{"@type":"ReadAction","target":["https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html"]}]},{"@type":"Article","@id":"https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html#article","isPartOf":{"@id":"https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html#webpage"},"author":{"@id":"https://velhobit.com.br/#/schema/person/063b4a4e447e77ccc259302930f8c1a6"},"headline":"Como tirar uma foto usando a Webcam (Javascript + HTML)?","datePublished":"2019-01-19T20:07:22+00:00","dateModified":"2019-01-21T20:38:48+00:00","commentCount":0,"mainEntityOfPage":{"@id":"https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html#webpage"},"publisher":{"@id":"https://velhobit.com.br/#organization"},"image":{"@id":"https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html#primaryimage"},"keywords":"biometria,camera,foto,html,html5,identifica\u00e7\u00e3o,javascript,php,registro,rosto,screenshot,tutorial,webcam","articleSection":"Desenvolvimento,Programa\u00e7\u00e3o,Tutoriais","inLanguage":"pt-BR","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html#respond"]}]},{"@type":["Person"],"@id":"https://velhobit.com.br/#/schema/person/063b4a4e447e77ccc259302930f8c1a6","name":"Rodrigo Portillo","image":{"@type":"ImageObject","@id":"https://velhobit.com.br/#personlogo","inLanguage":"pt-BR","url":"https://secure.gravatar.com/avatar/4559e8d5d76e640c80b590125f8f735a?s=96&d=mm&r=g","caption":"Rodrigo Portillo"},"description":"Gosto tanto de design que aprendi programa\u00e7\u00e3o e regras para garantir a estabilidade de meus projetos. Trabalho e trabalhei com desenvolvimento full-stack em diversas linguagens, como Flex, PHP, Java, Javascript, dentre outras. Ainda trabalhei alguns anos como designer gr\u00e1fico e ilustrador.","sameAs":["https://www.facebook.com/profile.php?id=100008652127063","https://www.linkedin.com/in/rodrigoportillo/","https://twitter.com/velhobit"]}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Feed para Velho Bit &raquo;" href="https://velhobit.com.br/feed" />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Velho Bit &raquo;" href="https://velhobit.com.br/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Velho Bit &raquo; Como tirar uma foto usando a Webcam (Javascript + HTML)?" href="https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/velhobit.com.br\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4.2"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://velhobit.com.br/wp-includes/css/dist/block-library/style.min.css?ver=5.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='mashsb-styles-css'  href='https://velhobit.com.br/wp-content/plugins/mashsharer/assets/css/mashsb.min.css?ver=3.7.5' type='text/css' media='all' />
+<style id='mashsb-styles-inline-css' type='text/css'>
+.mashsb-count {color:#49a7eb;}
+        [class^="mashicon-"], .onoffswitch-label, .onoffswitch2-label, .onoffswitch {
+            border-radius: 5px;
+        }@media only screen and (min-width:568px){.mashsb-buttons a {min-width: 177px;}}
+</style>
+<link rel='stylesheet' id='spacexchimp_p010-frontend-css-css'  href='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/css/frontend.css?ver=2.49' type='text/css' media='all' />
+<style id='spacexchimp_p010-frontend-css-inline-css' type='text/css'>
+
+                    .CodeMirror {
+                        height: 100% !important;
+                    }
+                  
+</style>
+<link rel='stylesheet' id='estilo-css'  href='https://velhobit.com.br/wp-content/plugins/simple-code-highlighter/estilo.css?ver=5.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-pagenavi-css'  href='https://velhobit.com.br/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70' type='text/css' media='all' />
+<script>if (document.location.protocol != "https:") {document.location = document.URL.replace(/^http:/i, "https:");}</script><script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/jquery-updater/js/jquery-3.5.1.min.js?ver=3.5.1'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/jquery-updater/js/jquery-migrate-3.3.0.min.js?ver=3.3.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var mashsb = {"shares":"145","round_shares":"1","animate_shares":"1","dynamic_buttons":"0","share_url":"https:\/\/velhobit.com.br\/programacao\/como-tirar-uma-foto-usando-a-webcam-javascript-html.html","title":"Como+tirar+uma+foto+usando+a+Webcam+%28Javascript+%2B+HTML%29%3F","image":"https:\/\/velhobit.com.br\/wp-content\/uploads\/2019\/01\/camera.jpg","desc":"Com o HTML5 podemos utilizar recursos de hardware em nossas p\u00e1ginas. Este tutorial mostra como usar Javascript e PHP para salvar screenshots da webcam.","hashtag":"velhobit","subscribe":"content","subscribe_url":"","activestatus":"1","singular":"1","twitter_popup":"1","refresh":"0","nonce":"dd6449920a","postid":"1748","servertime":"1593033697","ajaxurl":"https:\/\/velhobit.com.br\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/mashsharer/assets/js/mashsb.min.js?ver=3.7.5'></script>
+<link rel='https://api.w.org/' href='https://velhobit.com.br/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://velhobit.com.br/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://velhobit.com.br/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.4.2" />
+<link rel='shortlink' href='https://velhobit.com.br/?p=1748' />
+<link rel="alternate" type="application/json+oembed" href="https://velhobit.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fvelhobit.com.br%2Fprogramacao%2Fcomo-tirar-uma-foto-usando-a-webcam-javascript-html.html" />
+<link rel="alternate" type="text/xml+oembed" href="https://velhobit.com.br/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fvelhobit.com.br%2Fprogramacao%2Fcomo-tirar-uma-foto-usando-a-webcam-javascript-html.html&#038;format=xml" />
+<!-- analytics-code google analytics tracking code --><script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-92776781-3', 'auto');
+	ga('send', 'pageview');
+
+</script><!--  --><style>
+.area-do-video{
+display:none;
+}
+
+.cute-button{
+-webkit-appearance: none;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 15px;
+	text-align: center;
+font-size:16px;
+	background-color: #8211a8;
+	color: white;
+	text-transform: uppercase;
+	border: 1px solid white;
+	box-shadow: 0 1px 10px #ccc;
+border-radius:4px;
+margin-top:20px;
+}
+
+.area-do-video{
+	margin: 10px auto;
+	box-shadow: 0 10px 100px #ccc;
+	padding: 20px;
+	box-sizing: border-box;
+	max-width: 500px;
+}
+
+.area-do-video video{
+	width: 100%;
+	height: auto;
+	background-color: whitesmoke;
+}
+
+.area-do-video textarea{
+	width: 100%;
+	margin-top: 10px;
+	height: 80px;
+	box-sizing: border-box;
+}
+
+.area-do-video button{
+	-webkit-appearance: none;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	text-align: center;
+	background-color: #068c84;
+	color: white;
+	text-transform: uppercase;
+	border: 1px solid white;
+	box-shadow: 0 1px 5px #666;
+}
+
+.area-do-video button:focus{
+	outline: none;
+	background-color: #0989b0;
+}
+
+.area-do-video img{
+	max-width: 100%;
+	height: auto;
+margin-left: 0 !important;
+}
+
+.area-do-video .caminho-imagem{
+	padding: 5px 10px;
+	border-radius: 3px;
+	background-color: #068c84;
+	text-align: center;
+}
+
+.area-do-video .caminho-imagem a{
+	color: white !important;
+	text-decoration: none;
+}
+
+.area-do-video .caminho-imagem a:hover{
+	color: yellow !important;
+}
+</style> 
+
+<script>
+function loadCamera(){
+document.querySelector(".area-do-video").style.display = "block";
+	//Captura elemento de vídeo
+	var video = document.querySelector("#webCamera");
+		//As opções abaixo são necessárias para o funcionamento correto no iOS
+    video.setAttribute('autoplay', '');
+    
+	    video.setAttribute('muted', '');
+	    video.setAttribute('playsinline', '');
+	    //--
+	
+	//Verifica se o navegador pode capturar mídia
+	if (navigator.mediaDevices.getUserMedia) {
+		navigator.mediaDevices.getUserMedia({audio: false, video: {facingMode: 'user'}})
+		.then( function(stream) {
+			//Definir o elemento víde a carregar o capturado pela webcam
+			video.srcObject = stream;
+		})
+		.catch(function(error) {
+			alert("Oooopps... Falhou :'(");
+		});
+	}
+}
+
+function takeSnapShot(){
+	//Captura elemento de vídeo
+	var video = document.querySelector("#webCamera");
+	
+	//Criando um canvas que vai guardar a imagem temporariamente
+	var canvas = document.createElement('canvas');
+	canvas.width = video.videoWidth;
+	canvas.height = video.videoHeight;
+	var ctx = canvas.getContext('2d');
+	
+	//Desnehando e convertendo as minensões
+	ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+	
+	//Criando o JPG
+	var dataURI = canvas.toDataURL('image/jpeg'); //O resultado é um BASE64 de uma imagem.
+	document.querySelector("#base_img").value = dataURI;
+	
+	sendSnapShot(dataURI); //Gerar Imagem e Salvar Caminho no Banco
+}
+
+function sendSnapShot(base64){	
+	var request = new XMLHttpRequest();
+		request.open('POST', '/testes/save_photos.php', true);
+		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+		
+		request.onload = function() {
+			console.log(request);
+			if (request.status >= 200 && request.status < 400) {
+				//Colocar o caminho da imagem no SRC
+				var data = JSON.parse(request.responseText);
+				
+				//verificar se houve erro
+				if(data.error){
+					alert(data.error);
+					return false;
+				}
+				
+				//Mostrar informações
+				document.querySelector("#imagemConvertida").setAttribute("src", "/testes/"+data.img);
+				document.querySelector("#caminhoImagem a").setAttribute("href", "/testes/"+data.img);
+				document.querySelector("#caminhoImagem a").innerHTML = data.img.split("/")[1];
+			} else {
+				alert( "Erro ao salvar. Tipo:" + request.status );
+			}
+		};
+		
+		request.onerror = function() {
+		 	alert("Erro ao salvar. Back-End inacessível.");
+		}
+		
+		request.send("base_img="+base64); // Enviar dados
+}
+
+</script>  <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><script async defer src="https://buttons.github.io/buttons.js"></script> 
+<script src="https://kit.fontawesome.com/4e0d1383fd.js"></script>
+	<link rel="stylesheet" href="https://use.typekit.net/ykf2cus.css">
+	
+</head>
+<body data-rsssl=1 class="post-template-default single single-post postid-1748 single-format-standard">
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id;
+js.src = 'https://connect.facebook.net/pt_BR/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	
+	<main class="wrap">
+		<div class="site">
+			<div class="header">
+								<a class="titulo" href="https://velhobit.com.br" title="Voltar para a Home">
+					<img alt="Logo Velho Bit" src="https://velhobit.com.br/wp-content/themes/newbit/assets/logo.png"/>
+					<h1>Velho Bit</h1>
+				</a>
+								<a class="icone azul-claro" href="https://twitter.com/velhobit" title="Twitter do Velho Bit" target="_blank"><i class="fab fa-twitter"></i></a>
+				<a class="icone rosa" href="https://instagram.com/velhobit" title="Instagram do Velho Bit" target="_blank"><i class="fab fa-instagram"></i></a>
+				<a class="icone azul" href="https://facebook.com/velhobit" title="Facebook do Velho Bit" target="_blank"><i class="fab fa-facebook-f"></i></a>
+				<a class="icone cinza" href="https://github.com/velhobit" title="GitHub do Velho Bit" target="_blank"><i class="fab fa-github"></i></a>
+				<div style="flex: auto"></div>
+				<ul class="nav desktop-only">
+					<li>
+						<a class="grey-text" id="noticias" href="https://velhobit.com.br/noticias">Notícias</a> </li>
+					<li>
+						<a class="grey-text" id="desenvolvimento" href="https://velhobit.com.br/desenvolvimento">Desenvolvimento</a> </li>
+					<li>
+						<a class="grey-text" id="design" href="https://velhobit.com.br/design">Design</a> </li>
+					<li>
+						<a class="grey-text" id="programacao" href="https://velhobit.com.br/programacao">Programação</a> </li>
+					<li>
+						<a class="grey-text" id="tutoriais" href="https://velhobit.com.br/tutoriais">Tutoriais</a> </li>
+					<li>
+						<a class="grey-text" id="projetos" href="https://velhobit.com.br/projetos">Projetos</a> </li>
+					<li>
+						<a  class="grey-text" id="editorial" href="https://velhobit.com.br/editorial">Editorial</a> </li>
+				</ul>
+				<div style="flex: auto"></div>
+				<form role="search" method="get" class="search-form" action="https://velhobit.com.br/">
+    <input type="search" class="search-field"
+            placeholder="Encontrar Assunto"
+            value="" name="s"
+            title="Campo de Pesquisa" />
+    <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
+</form>			</div>
+
+<script>
+		
+	
+	var c_page = 1;
+
+	function cat_ajax_get(catID,page) {
+		
+		if(page != false && page == ""){
+			page = c_page;
+		}
+		jQuery("body").css("overflow", "none");
+		jQuery(".container-loader").show();
+		var ajaxurl = 'https://velhobit.com.br/wp-admin/admin-ajax.php';
+		c_page = c_page + 1;
+		
+		var last = jQuery(".blog-index .card:last-child");
+		console.log(catID);
+			console.log(page);
+		jQuery.ajax({
+			type: 'POST',
+			url: ajaxurl,
+			data: {"action": "load-filter", cat: catID, pag: page },
+			success: function(response) {
+				
+				jQuery(".blog-index").append(response);
+				jQuery(".container-loader").hide();
+
+				if(response.trim() == "0" || response == undefined || response == false){
+					cat_ajax_get == function(){ return false; };
+					
+					jQuery(".container.mais .card").html('<div class="contexto"><h1 style="font-size:1em;"><i class="fas fa-check"></i> Todos os posts já foram carregados.<h1></div>');
+				}	
+				jQuery("body").css("overflow", "auto");
+				
+				jQuery([document.documentElement, document.body]).animate({
+					scrollTop: jQuery(last).offset().top
+				}, 1000);
+				
+				
+				return false;
+			},
+			statusCode: {
+				500: function() {
+					jQuery(".container-loader").hide();
+					cat_ajax_get == function(){ return false; };
+					jQuery(window).unbind('scroll');
+					jQuery(window).unbind('onscroll');
+				}
+			  },
+			error: function() {
+					jQuery(".container-loader").hide();
+					cat_ajax_get == function(){ return false; };
+					jQuery(window).unbind('scroll');
+					jQuery(window).unbind('onscroll');
+			  },
+			before: function(){
+				console.log(catID);
+				console.log(page);
+			}
+		});
+	}
+</script>
+<!--Adobe Fonts--> 
+<script src="https://use.typekit.net/fxx5kmo.js"></script> 
+<script>try{Typekit.load({ async: true });}catch(e){}</script> 
+<section class="container">
+		<article class="single post">
+		<div class="cabecalho">
+			<div class="miniatura">
+				<a href="https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html" title="Como tirar uma foto usando a Webcam (Javascript + HTML)?">
+					<img src="https://velhobit.com.br/wp-content/uploads/2019/01/camera.jpg" alt="Como tirar uma foto usando a Webcam (Javascript + HTML)?"/>
+				</a>
+			</div>
+			<header>
+				<h2><a href="https://velhobit.com.br/./desenvolvimento" rel="category tag">Desenvolvimento</a>,<a href="https://velhobit.com.br/./programacao" rel="category tag">Programação</a>,<a href="https://velhobit.com.br/./tutoriais" rel="category tag">Tutoriais</a> - <time itemprop="datePublished" class="horario"  content="2019-01-19T18:07:22-02:00">19 de janeiro de 2019</time></h2>
+				<h1>Como tirar uma foto usando a Webcam (Javascript + HTML)?</h1>
+			</header>
+		</div>
+		<div class="conteudo">
+			
+<p class="has-background has-very-light-gray-background-color"><strong><em>Disclaimer:</em></strong> Provavelmente a funcionalidade de webcam não está acessível via navegador interno de aplicativo (como o navegador interno do app do Facebook ou outro app mobile). Experimente direto em um navegador (mobile ou desktop).</p>
+
+
+
+<p>O HTML5 nos trouxe diversas opções interessantes para desenvolvimento de RIAs (<em>Rich Internet Applications</em>). Em diversos sistemas online, precisamos de uma foto da pessoa que está sendo cadastrada. Para sistemas de hotéis, saúde, academias, dentre outros, que precisam de maior identificação, podemos usar a <em>webcam</em> para fazer a foto na hora que poderá ser usada em posterior conferência. Recurso esse que também está disponível em dispositivos móveis.</p>
+
+
+
+<p>A ideia é transformar a imagem corrente da <em>webcam</em> em uma imagem <em>base64</em>. Após isso, converter essa codificação em uma imagem JPG e devolver o caminho – quase como se fosse um upload. Dessa forma você poderá salvar apenas o caminho da imagem no seu banco de dados, sem ficar um campo muito extenso ou que possa falhar em dispositivos móveis. Neste exemplo, será usado Javascript puro, a fim de universalizar para quem quiser utilizar em sua aplicação web.</p>
+
+
+
+<h2>Exemplo:</h2>
+
+
+
+<button onclick="loadCamera()" class="cute-button">📸 Clique aqui para visualizar a Webcam</button>
+<div class="area-do-video">
+
+<video autoplay="true" id="webCamera"></video>
+
+<textarea type="text" id="base_img" name="base_img"></textarea>
+<button type="button" onclick="takeSnapShot()">Tirar foto e salvar</button>
+<img id="imagemConvertida">
+<p id="caminhoImagem" class="caminho-imagem"><a href="" target="_blank"></a></p>
+</div>
+
+
+
+<h2>HTML5</h2>
+
+
+
+<p>Vamos começar criando nosso exemplo com os elementos HTML. Tudo o que realmente precisamos é de uma tag <em>button</em> e uma tag <em>video</em>, mas para poder visualizar o exemplo, vamos colocar o retorno em um <em>img</em>, link da imagem gerada e um <em>textarea</em> para vermos o <em>base64</em>.</p>
+
+
+<div class="my-syntax-highlighter">
+<pre><textarea id="mshighlighter" class="mshighlighter" language="html" name="mshighlighter" ><div class="area">
+			<video autoplay="true" id="webCamera">
+			</video>
+	
+			<input  type="text" id="base_img" name="base_img"/>
+			<button type="button" onclick="takeSnapShot()">Tirar foto e salvar</button>
+	
+			<img id="imagemConvertida"/>
+			<p id="caminhoImagem" class="caminho-imagem"><a href="" target="_blank"></a></p>
+			<script src="script.js"></script>
+</div></textarea></pre>
+</div>
+
+
+
+<p>Não precisamos necessariamente de um CSS para poder funcionar, mas, apenas para exemplo, vamos colocar um <em>CSSzinho</em>&#8230;</p>
+
+
+<div class="my-syntax-highlighter">
+<pre><textarea id="mshighlighter" class="mshighlighter" language="css" name="mshighlighter" >body{
+	font-family: sans-serif;
+	margin: 0;
+}
+
+.area{
+	margin: 10px auto;
+	box-shadow: 0 10px 100px #ccc;
+	padding: 20px;
+	box-sizing: border-box;
+	max-width: 500px;
+}
+
+.area video{
+	width: 100%;
+	height: auto;
+	background-color: whitesmoke;
+}
+
+.area textarea{
+	width: 100%;
+	margin-top: 10px;
+	height: 80px;
+	box-sizing: border-box;
+}
+
+.area button{
+	-webkit-appearance: none;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	text-align: center;
+	background-color: #068c84;
+	color: white;
+	text-transform: uppercase;
+	border: 1px solid white;
+	box-shadow: 0 1px 5px #666;
+}
+
+.area button:focus{
+	outline: none;
+	background-color: #0989b0;
+}
+
+.area img{
+	max-width: 100%;
+	height: auto;
+}
+
+.area .caminho-imagem{
+	padding: 5px 10px;
+	border-radius: 3px;
+	background-color: #068c84;
+	text-align: center;
+}
+
+.area .caminho-imagem a{
+	color: white;
+	text-decoration: none;
+}
+
+.area .caminho-imagem a:hover{
+	color: yellow;
+}</textarea></pre>
+</div>
+
+
+
+<h2>Javascript</h2>
+
+
+
+<p>Agora vamos para a parte divertida. Basicamente vamos dividir nosso código em 3 partes: Chamar a webcam, tirar o instantâneo, e enviar/receber os dados do PHP. Criaremos o arquivo <strong><em>script.js</em></strong>.</p>
+
+
+
+<p>A função <em>LoadCamera</em>, irá transformar a webcam em uma espécie de <em>streamming</em> local. Para isso, é necessário que o navegador tenha suporte a isso, logo, precisamos de um navegador moderno com total compatibilidade a HTML5. Basicamente, todos os navegadores modernos, então não pense em compatibilidade com <em>Internet Explorer</em>.</p>
+
+
+<div class="my-syntax-highlighter">
+<pre><textarea id="mshighlighter" class="mshighlighter" language="javascript" name="mshighlighter" >function loadCamera(){
+	//Captura elemento de vídeo
+	var video = document.querySelector("#webCamera");
+		//As opções abaixo são necessárias para o funcionamento correto no iOS
+		video.setAttribute('autoplay', '');
+	    video.setAttribute('muted', '');
+	    video.setAttribute('playsinline', '');
+	    //--
+	
+	//Verifica se o navegador pode capturar mídia
+	if (navigator.mediaDevices.getUserMedia) {
+		navigator.mediaDevices.getUserMedia({audio: false, video: {facingMode: 'user'}})
+		.then( function(stream) {
+			//Definir o elemento vídeo a carregar o capturado pela webcam
+			video.srcObject = stream;
+		})
+		.catch(function(error) {
+			alert("Oooopps... Falhou :'(");
+		});
+	}
+}</textarea></pre>
+</div>
+
+
+
+<p>Você deve ter notado que a função acima tem um comentário com alguns parâmetros adicionais. Esses parâmetros são necessários para o funcionamento no iOS.</p>
+
+
+
+<p>Já a função <em>takeSnapShot</em> irá justamente tirar o instantâneo. Essa função irá criar um elemento <em>canvas</em> e desenhar em seu conteúdo uma imagem matricial, baseada no vídeo (um ctrl+c / ctrl+v automático, digamos assim). A partir daí podemos obter o <em>base64</em> desse canvas e utilizá-lo para enviar posteriormente.</p>
+
+
+<div class="my-syntax-highlighter">
+<pre><textarea id="mshighlighter" class="mshighlighter" language="javascript" name="mshighlighter" >function takeSnapShot(){
+	//Captura elemento de vídeo
+	var video = document.querySelector("#webCamera");
+	
+	//Criando um canvas que vai guardar a imagem temporariamente
+	var canvas = document.createElement('canvas');
+	canvas.width = video.videoWidth;
+	canvas.height = video.videoHeight;
+	var ctx = canvas.getContext('2d');
+	
+	//Desenhando e convertendo as dimensões
+	ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+	
+	//Criando o JPG
+	var dataURI = canvas.toDataURL('image/jpeg'); //O resultado é um BASE64 de uma imagem.
+	document.querySelector("#base_img").value = dataURI;
+	
+	sendSnapShot(dataURI); //Gerar Imagem e Salvar Caminho no Banco
+}</textarea></pre>
+</div>
+
+
+
+<p>Você pode, inclusive, se quiser, já adicionar essa <em>base64</em> em no <em>src</em> de um elemento <em>img</em>.</p>
+
+
+
+<p>Agora, precisamos enviar essa <em>base64</em> para o PHP. Usaremos o PHP para salvar a imagem em um arquivo jpg (você pode optar por png também). O PHP irá retornar, posteriormente, um <em>json</em> com o caminho completo da imagem, que iremos carregar no objeto <em>img</em> descrito no HTML supracitado. Faremos isso dinamicamente, por técnica de Ajax, sem formulário, pois o <em>submit</em> de um <em>form</em> poderá ser usado futuramente para a conclusão de um determinado cadastro:</p>
+
+
+<div class="my-syntax-highlighter">
+<pre><textarea id="mshighlighter" class="mshighlighter" language="javascript" name="mshighlighter" >function sendSnapShot(base64){
+var request = new XMLHttpRequest();
+request.open('POST', 'save_photos.php', true);
+request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+<pre><code>    request.onload = function() {
+        console.log(request);
+        if (request.status &gt;= 200 &amp;&amp; request.status &lt; 400) {
+            //Colocar o caminho da imagem no SRC
+            var data = JSON.parse(request.responseText);
+
+            //verificar se houve erro
+            if(data.error){
+                alert(data.error);
+                return false;
+            }
+
+            //Mostrar informações
+            document.querySelector("#imagemConvertida").setAttribute("src", data.img);
+            document.querySelector("#caminhoImagem a").setAttribute("href", data.img);
+            document.querySelector("#caminhoImagem a").innerHTML = data.img.split("/")[1];
+        } else {
+            alert( "Erro ao salvar. Tipo:" + request.status );
+        }
+    };
+
+    request.onerror = function() {
+        alert("Erro ao salvar. Back-End inacessível.");
+    }
+
+    request.send("base_img="+base64); // Enviar dados</code></pre>
+<p>}</textarea></div>
+
+
+
+<h2>PHP</h2>
+
+
+
+<p>No lado do PHP, basicamente, usaremos um $_POST para capturar o dado enviado via <em>Ajax</em> pelo <em>Javascript</em>. Criaremos então o arquivo <strong><em>salvar_photos.php</em></strong>.</p>
+
+
+
+<p>Não há muitos segredos, mas é importante se atentar a dois detalhes:</p>
+
+
+
+<ol><li>Os dados chegam com o + transformado em espaço, então precisamos converter novamente para + com um <em>replace</em>.</li><li>Precisamos salvar apenas os dados <em>mime</em>, sem os cabeçalhos, logo precisamos dar um explode para coletar apenas os dados. </li></ol>
+
+
+
+<p>Fora isso, basicamente colocamos os dados em um arquivo JPG e retornamos a URL em <em>json</em> para ser lido pelo <em>Javascript</em> novamente.</p>
+
+
+<div class="my-syntax-highlighter">
+<pre><textarea id="mshighlighter" class="mshighlighter" language="php" name="mshighlighter" ><?php
+	if(!isset($_POST['base_img'])){
+		die("{\"error\": \" Flopou. Cadê o base_img?\"}");
+	}
+
+	$result = [];
+	$data = str_replace(" ","+",$_POST['base_img']); //O envio do dado pelo XMLHttpRequest tende a trocar o + por espaço, por isso a necessidade de substituir. 
+	$name = md5(time().uniqid()); 
+	$path = "snaps/{$name}.jpg";
+
+	//data
+	$data = explode(',', $data);
+	
+	//Save data
+	file_put_contents($path, base64_decode(trim($data[1])));
+	
+	//Print Data
+	$result['img'] = $path;
+	echo json_encode($result, JSON_PRETTY_PRINT);
+?></textarea></pre>
+</div>
+
+
+
+<p>Uma vez tudo pronto, basta chamar a função <strong><em>loadCamera()</em></strong> no evento que você quer que ele seja disparado.</p>
+
+
+
+<p>Como sempre, deixamos o código disponível para quem quiser utilizar. Desta vez, o código está no GitHub.</p>
+
+
+
+<!-- Place this tag where you want the button to render. -->
+<center style="margin-top:20px;"><a class="github-button" href="https://github.com/velhobit" data-size="large" data-show-count="true" aria-label="Follow @velhobit on GitHub">Follow @velhobit</a></center>
+
+
+
+<p>Se gostou, compartilha com seus amiguinhos interessados na área e curte a página no <strong><em><a rel="noreferrer noopener" aria-label="Facebook (abre em uma nova aba)" href="https://www.facebook.com/velhobit/" target="_blank">Facebook</a></em></strong>. O exemplo acima está levemente modificado para que funcione melhor aqui no site. Entre também no grupo de Design e Desenvolvimento. O link está abaixo do post.</p>
+<aside class="mashsb-container mashsb-main mashsb-stretched"><div class="mashsb-box"><div class="mashsb-count mash-medium" style="float:left;"><div class="counts mashsbcount">145</div><span class="mashsb-sharetext">Compartilhamentos</span></div><div class="mashsb-buttons"><a class="mashicon-facebook mash-medium mash-center mashsb-noshadow" href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fvelhobit.com.br%2Fprogramacao%2Fcomo-tirar-uma-foto-usando-a-webcam-javascript-html.html" target="_top" rel="nofollow"><span class="icon"></span><span class="text">Compartilhar</span></a><a class="mashicon-twitter mash-medium mash-center mashsb-noshadow" href="https://twitter.com/intent/tweet?text=Como%20tirar%20uma%20foto%20usando%20a%20Webcam%20%28Javascript%20%2B%20HTML%29%3F&url=https://velhobit.com.br/programacao/como-tirar-uma-foto-usando-a-webcam-javascript-html.html&via=velhobit" target="_top" rel="nofollow"><span class="icon"></span><span class="text">Tuítar</span></a><div class="onoffswitch2 mash-medium mashsb-noshadow" style="display:none;"></div></div>
+            </div>
+                <div style="clear:both;"></div><div class="mashsb-toggle-container"></div></aside>
+            <!-- Share buttons by mashshare.net - Version: 3.7.5-->		</div>
+		<div class="sel_midias">
+	<h3>Dúvidas?<br/>Entre em um de nossos grupos ou deixe um comentário:</h5>
+	<a class="btn-l azul" href="https://www.facebook.com/groups/designdesenvolvimento/" target="_blank"><i class="fab fa-facebook"></i> Grupo no Facebook</a>
+	<a class="btn-l esmeralda" href="https://t.me/joinchat/DVVROhDpnoxUTCtKtQZtLg" target="_blank"><i class="fab fa-telegram"></i> Grupo no Telegram</a>
+</div>
+<style>
+	.sel_midias{
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		margin: 20px 0;
+	}
+	.sel_midias h3{
+		width: 100%;
+		margin: 0;
+		margin-bottom: 8px;
+	}
+	.sel_midias .btn-l{
+		box-sizing: border-box;
+		padding: 8px 14px;
+		border-radius: 50px;
+	}
+</style>		<div class="author">
+								<div class="sobre_o_autor" itemprop="author" itemscope itemtype="http://schema.org/Person">
+				<a href="https://www.linkedin.com/in/rodrigoportillo/" target="_blank"><img alt='' src='https://secure.gravatar.com/avatar/4559e8d5d76e640c80b590125f8f735a?s=128&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/4559e8d5d76e640c80b590125f8f735a?s=256&#038;d=mm&#038;r=g 2x' class='avatar avatar-128 photo' height='128' width='128' /></a>
+				<div class="desc" >
+					<h3 itemprop="name" rel="author" >Rodrigo Portillo</h3>
+					<p><a href="https://twitter.com/velhobit" title="Twitter de Rodrigo Portillo" target="_blank">@velhobit</a></p>
+					<p itemprop="description">Gosto tanto de design que aprendi programação e regras para garantir a estabilidade de meus projetos. Trabalho e trabalhei com desenvolvimento full-stack em diversas linguagens, como Flex, PHP, Java, Javascript, dentre outras. Ainda trabalhei alguns anos como designer gráfico e ilustrador.<br/><a href="https://www.linkedin.com/in/rodrigoportillo/" target="_blank">Busque mais informaçoes pelo LinkedIn.</a></p>
+				</div>
+			</div>
+		
+			<div style="background-color: #00ffa2; border-radius: 5px;">
+				<a href="https://join.slack.com/t/velhobit/shared_invite/zt-ekfkgbnm-P5hblurKSyZpwZ3gbhrXqA" target="_blank" title="Entre para o Grupo Design e Programação no Slack">
+					<img style="display: block; border-radius: 5px; max-width: 100%; margin: 10px auto;" src="https://velhobit.com.br/wp-content/uploads/2020/06/slack.jpg" alt="Entre para o Grupo Design e Programação no Slack"/>
+				</a>
+			</div>
+				</div>
+		<footer class="more">
+			<!--<div class="shares">
+				<div class="share_">
+				<div class="fb-page" data-href="https://www.facebook.com/velhobit/" data-tabs="timeline" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/velhobit/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/velhobit/">Velho Bit</a></blockquote></div>
+					</div>
+			
+			</div>-->
+			<div class="comentarios">
+				
+<div id="disqus_thread"></div>
+			</div>
+		</footer>
+	</article>
+	</section>
+</div>
+</main>
+<!--Menu-->
+<div class="area_menu">
+	
+<nav class="fab-site">
+    <a class="main roxo"><i class="fas fa-bars"></i></a>
+    <ul>
+        <li>
+            <label for="noticias">Notícias</label>
+            <a class="esmeralda" id="noticias" href="https://velhobit.com.br/noticias"> <i class="far fa-newspaper"></i> </a> </li>
+        <li>
+            <label for="desenvolvimento">Desenvolvimento</label>
+            <a class="esmeralda" id="desenvolvimento" href="https://velhobit.com.br/desenvolvimento"> <i class="far fa-file-code"></i> </a> </li>
+        <li>
+            <label for="notdesignicias">Design</label>
+            <a class="esmeralda" id="design" href="https://velhobit.com.br/design"> <i class="fas fa-swatchbook"></i></a> </li>
+        <li>
+            <label for="programacao">Programação</label>
+            <a class="esmeralda" id="programacao" href="https://velhobit.com.br/programacao"> <i class="fas fa-code"></i></a> </li>
+        <li>
+            <label for="tutoriais">Tutoriais</label>
+            <a class="esmeralda" id="tutoriais" href="https://velhobit.com.br/tutoriais"> <i class="fas fa-graduation-cap"></i> </a> </li>
+        <li>
+            <label for="projetos">Projetos</label>
+            <a class="esmeralda" id="projetos" href="https://velhobit.com.br/projetos"> <i class="fas fa-drafting-compass"></i> </a> </li>
+        <li>
+            <label for="editorial">Editorial</label>
+            <a  class="esmeralda" id="editorial" href="https://velhobit.com.br/editorial"> <i class="fas fa-dice-d20"></i> </a> </li>
+    </ul>
+</nav>
+	
+</div>
+<!-- -->
+<script type="text/javascript" src="https://velhobit.com.br/wp-content/themes/newbit/js/script.js"></script>
+<link rel='stylesheet' id='spacexchimp_p010-codemirror-css-css'  href='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/lib/codemirror.css?ver=2.49' type='text/css' media='all' />
+<link rel='stylesheet' id='spacexchimp_p010-codemirror-theme-css-css'  href='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/theme/ambiance.css?ver=2.49' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"portillodesign"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/disqus-comment-system/public/js/comment_count.js?ver=3.0.17'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.17"},"disqusIdentifier":"1748 https:\/\/velhobit.com.br\/?p=1748","disqusShortname":"portillodesign","disqusTitle":"Como tirar uma foto usando a Webcam (Javascript + HTML)?","disqusUrl":"https:\/\/velhobit.com.br\/programacao\/como-tirar-uma-foto-usando-a-webcam-javascript-html.html","postId":"1748"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/disqus-comment-system/public/js/comment_embed.js?ver=3.0.17'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/simple-code-highlighter/js/pretty.js?ver=5.4.2'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-includes/js/wp-embed.min.js?ver=5.4.2'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/lib/codemirror.js?ver=2.49'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var spacexchimp_p010_scriptParams = {"theme":"ambiance","line_numbers":"true","first_line_number":"0","dollar_sign":"false","tab_size":"4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/js/codemirror-settings.js?ver=2.49'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/addon/display/autorefresh.js?ver=2.49'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/clike/clike.js?ver=2.49'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/css/css.js?ver=2.49'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/htmlmixed/htmlmixed.js?ver=2.49'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/javascript/javascript.js?ver=2.49'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/markdown/markdown.js?ver=2.49'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/perl/perl.js?ver=2.49'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/php/php.js?ver=2.49'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/sass/sass.js?ver=2.49'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/shell/shell.js?ver=2.49'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/sql/sql.js?ver=2.49'></script>
+<script type='text/javascript' src='https://velhobit.com.br/wp-content/plugins/my-syntax-highlighter/inc/lib/codemirror/mode/xml/xml.js?ver=2.49'></script>
+</body>
+</html>
